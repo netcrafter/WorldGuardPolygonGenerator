@@ -1,0 +1,14 @@
+#WGPG Configuration file
+#Website: dev.bukkit.org/bukkit-plugins/wgpg
+#
+#language file to use for strings. Currently only english available.
+lang: en
+#If set to false it will not override existing Worldguard regions, if set to true it will override existing Worldguard regions.
+#You can also use the permissions node 'wgpg.generate.override' to allow specific players to override existing regions. Default: false
+override-existing-region: false
+#If set to true the player who executed the command will be added to the region as the owner of the region. 
+#If set to false the player will not be added to the region. Default: false
+add-as-owner: false
+#If set to true the player who executed the command will be added to the region as a member. 
+#If set to false the player will not be added to the region. Default: false
+add-as-member: false

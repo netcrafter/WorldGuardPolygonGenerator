@@ -1,0 +1,23 @@
+name: WorldGuardPolygonGenerator
+main: net.goodnightkimba.WorldGuardPolygonGenerator.WorldGuardPolygonGenerator
+version: 2.0
+author: myminecrafter01
+depend: [WorldGuard, WorldEdit]
+prefix: WGPG
+commands:
+   wgpg:
+     description: Generates a WorldGuard polygon region based upon the players input.
+     usage: /wgpg <regionName> <radius> <points> <offset> <minY> <maxY> [X] [Z] [world]
+permissions:
+   wgpg.generate:
+     description: Permission to use /wgpg <string> <radius> <points> <offset> <Y-min> <Y-Max> [world] [X] [Z]
+     default: op
+   wgpg.generate.override:
+     description: Allows a player to override an existing Worldguard region when creating Worldguard regions via WGPG.
+     default: op
+   wgpg.help:
+     description: Permission to use /wgpg help command.
+     default: op
+   wgpg.reload:
+     description: Permission to use /wgpg reload command.
+     default: op
