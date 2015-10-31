@@ -43,14 +43,6 @@ public final class WorldGuardPolygonGenerator extends JavaPlugin {
 		config.loadConfig();
 		
 		getCommand("wgpg").setExecutor(new WGPGCommand());
-		
-		try {
-		    MetricsLite metrics = new MetricsLite(this);
-		    metrics.start();
-		} catch (IOException e) {
-			e.printStackTrace();
-			LOGGER.log(Level.SEVERE, PREFIX + "WorldGuardPolygonGenerator failed to load Plugin metrics.");
-		}
 	}
 
 	private WorldGuardPlugin getWorldGuard() {

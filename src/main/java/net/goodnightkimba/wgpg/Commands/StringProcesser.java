@@ -15,7 +15,7 @@ public class StringProcesser {
 	public void processColor() {
 		String[] codes = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "r", "l", "n", "o", "k", "m"};
 		for (int i = 0; i < codes.length; i++) {
-			this.string = string.replaceAll("&[" + codes[i] +"]", "§" + codes[i]);	
+			this.string = string.replaceAll("&[" + codes[i] +"]", "\u00A7" + codes[i]);
 		}
 	}
 	
