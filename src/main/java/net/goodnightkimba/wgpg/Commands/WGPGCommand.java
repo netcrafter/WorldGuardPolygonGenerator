@@ -1,5 +1,6 @@
 package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
 
+import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.WorldGuardPolygonGenerator.Config;
 import net.goodnightkimba.WorldGuardPolygonGenerator.Regions.Polygon;
 import net.goodnightkimba.WorldGuardPolygonGenerator.Regions.PolygonRegionCreator;
@@ -10,8 +11,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import com.sk89q.worldguard.protection.databases.ProtectionDatabaseException;
 
 public class WGPGCommand implements CommandExecutor {
 	
@@ -106,14 +105,14 @@ public class WGPGCommand implements CommandExecutor {
 				prc.setOwner((Player) sender);
 			}
 		}
-		
+
 		try {
 			prc.save();
-		} catch (ProtectionDatabaseException e) {
+		} catch (StorageException e) {
 			e.printStackTrace();
 			StringProcesser sp = new StringProcesser(Config.getString("region-save-error"));
 			sp.processColor();
-			
+
 			sender.sendMessage(sp.getString());
 			return;
 		}

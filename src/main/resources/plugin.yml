@@ -1,5 +1,5 @@
 name: WorldGuardPolygonGenerator
-main: net.goodnightkimba.WorldGuardPolygonGenerator.WorldGuardPolygonGenerator
+main: net.goodnightkimba.wgpg.WorldGuardPolygonGenerator
 version: 2.0
 author: myminecrafter01
 depend: [WorldGuard, WorldEdit]

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.domains.DefaultDomain;
-import com.sk89q.worldguard.protection.databases.ProtectionDatabaseException;
+import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
@@ -40,9 +40,9 @@ public class RegionCreator {
 		pr.setMembers(dd);		
 	}
 	
-	public void save() throws ProtectionDatabaseException {
+	public void save() throws StorageException {
 		
-		rm.addRegion(pr);
+		this.rm.addRegion(pr);
 		
 		this.rm.save();
 		

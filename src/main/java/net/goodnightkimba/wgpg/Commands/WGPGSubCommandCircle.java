@@ -18,7 +18,9 @@ public class WGPGSubCommandCircle extends WGPGCommand {
 	}
 	
 	public boolean executeCommand() {
-		if (this.args.length < 1)
-		return false;
+		if (this.args.length < 1) {
+			return false;
+		}
+        return true;
 	}
 }
