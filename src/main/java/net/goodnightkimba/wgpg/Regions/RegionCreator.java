@@ -1,6 +1,6 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Regions;
+package net.goodnightkimba.wgpg.regions;
 
-import net.goodnightkimba.WorldGuardPolygonGenerator.WorldGuardPolygonGenerator;
+import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 
 import org.bukkit.World;
 import org.bukkit.entity.Player;

@@ -1,9 +1,9 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
 import java.util.regex.Pattern;
 
-import net.goodnightkimba.WorldGuardPolygonGenerator.Config;
-import net.goodnightkimba.WorldGuardPolygonGenerator.WorldGuardPolygonGenerator;
+import net.goodnightkimba.wgpg.Config;
+import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 
 import org.bukkit.Bukkit;
 

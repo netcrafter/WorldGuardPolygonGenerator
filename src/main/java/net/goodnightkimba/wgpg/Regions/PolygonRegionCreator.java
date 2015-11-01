@@ -1,4 +1,4 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Regions;
+package net.goodnightkimba.wgpg.regions;
 
 import java.util.List;
 

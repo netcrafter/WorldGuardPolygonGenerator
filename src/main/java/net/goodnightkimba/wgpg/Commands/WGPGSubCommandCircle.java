@@ -1,4 +1,4 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
 public class StringProcesser {
 	

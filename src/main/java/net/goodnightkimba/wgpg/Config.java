@@ -1,4 +1,4 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator;
+package net.goodnightkimba.wgpg;
 
 import java.io.InputStream;
 import java.util.logging.Level;

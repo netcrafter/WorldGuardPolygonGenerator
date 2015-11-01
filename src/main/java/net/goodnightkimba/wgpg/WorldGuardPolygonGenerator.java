@@ -2,13 +2,13 @@
     WorldGuard Polygon Generator (WGPG) - A Bukkit plugin to create custom shapes using WorldGuards polygon regions.
     Copyright (C) 2013 myminecrafter01 (Adam Simpson)
  */
-package net.goodnightkimba.WorldGuardPolygonGenerator;
+package net.goodnightkimba.wgpg;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.goodnightkimba.WorldGuardPolygonGenerator.Commands.WGPGCommand;
+import net.goodnightkimba.wgpg.commands.WGPGCommand;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;

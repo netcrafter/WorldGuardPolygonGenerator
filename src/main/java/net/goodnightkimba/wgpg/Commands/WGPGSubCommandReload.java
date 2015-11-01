@@ -1,6 +1,6 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
-import net.goodnightkimba.WorldGuardPolygonGenerator.WorldGuardPolygonGenerator;
+import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

@@ -1,9 +1,9 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
 import com.sk89q.worldguard.protection.managers.storage.StorageException;
-import net.goodnightkimba.WorldGuardPolygonGenerator.Config;
-import net.goodnightkimba.WorldGuardPolygonGenerator.Regions.Polygon;
-import net.goodnightkimba.WorldGuardPolygonGenerator.Regions.PolygonRegionCreator;
+import net.goodnightkimba.wgpg.Config;
+import net.goodnightkimba.wgpg.regions.Polygon;
+import net.goodnightkimba.wgpg.regions.PolygonRegionCreator;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;

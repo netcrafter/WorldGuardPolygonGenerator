@@ -1,6 +1,6 @@
-package net.goodnightkimba.WorldGuardPolygonGenerator.Commands;
+package net.goodnightkimba.wgpg.commands;
 
-import net.goodnightkimba.WorldGuardPolygonGenerator.Config;
+import net.goodnightkimba.wgpg.Config;
 
 public class UserInputException extends Exception {
 
