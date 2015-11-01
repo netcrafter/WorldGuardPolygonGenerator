@@ -1,6 +1,6 @@
-name: WorldGuardPolygonGenerator
-main: net.goodnightkimba.wgpg.WorldGuardPolygonGenerator
-version: 2.0
+name: ${project.name}
+main: ${project.groupId}.WorldGuardPolygonGenerator
+version: ${project.version}
 author: myminecrafter01
 depend: [WorldGuard, WorldEdit]
 prefix: WGPG

@@ -20,7 +20,6 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 public final class WorldGuardPolygonGenerator extends JavaPlugin {
 	private static final Logger LOGGER = Logger.getLogger("Minecraft");
 	public static final String PREFIX = "[WGPG] ";
-	public static final String VERSION = "2.0";
 	public static WorldGuardPlugin WGBukkit = null;
 	public static WorldEditPlugin WEBukkit = null;
 
