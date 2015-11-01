@@ -101,7 +101,9 @@ public class WGPGCommand implements CommandExecutor {
 		if (sender instanceof Player) {
 			if (Config.addAsMember) {
 				prc.setMember((Player) sender);
-			} else if (Config.addAsOwner) {
+			}
+
+			if (Config.addAsOwner) {
 				prc.setOwner((Player) sender);
 			}
 		}

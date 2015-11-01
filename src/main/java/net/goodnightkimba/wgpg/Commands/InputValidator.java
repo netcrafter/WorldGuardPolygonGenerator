@@ -60,7 +60,7 @@ public class InputValidator {
 	
 	public boolean regionExists(String regionName, String world) throws UserInputException {
 		
-		if (Config.overrideExistingRegion == true) return true;
+		if (Config.overrideExistingRegion) return true;
 		
 		if (!(worldName(world))) throw new UserInputException("invalid-world", world, "World Name", "world");
 		

@@ -27,11 +27,11 @@ public class Polygon {
 	 * @return List<BlockVector2D> with com.sk89q.worldedit.BlockVector2D object for each point.
 	 */
 	public List<BlockVector2D> getPoints() {
-		List<BlockVector2D> polygonPoints = new ArrayList<BlockVector2D>();
-		double deg = 0 + this.offSet;
+		List<BlockVector2D> polygonPoints = new ArrayList<>();
+		double deg = this.offSet;
 		double angle = 360 / this.numPoints; //in degrees
-		double xCoord = 0;
-		double zCoord = 0;
+		double xCoord;
+		double zCoord;
 		for (int i = 0; i < this.numPoints; i++) {
 				
 			xCoord = (Math.cos(deg * (Math.PI / 180)) * this.radiusX) + this.inputX;

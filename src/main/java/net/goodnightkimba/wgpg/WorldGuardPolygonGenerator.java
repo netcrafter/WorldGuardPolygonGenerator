@@ -4,13 +4,11 @@
  */
 package net.goodnightkimba.wgpg;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.goodnightkimba.wgpg.commands.WGPGCommand;
 
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
