@@ -4,20 +4,18 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandEllipse extends WGPGCommand {
-	
-	private CommandSender sender;
-	private Command cmd;
-	private String label;
-	private String[] args;	
-	
-	public WGPGSubCommandEllipse(CommandSender sender, Command cmd, String label, String[] args) {
-		this.sender = sender;
-		this.cmd = cmd;
-		this.label = label;
-		this.args = args;
-	}
-	
-	public boolean executeCommand() {
+    public WGPGSubCommandEllipse() {
+        this.cmdName = "ellipse";
+        this.aliases.add("e");
+        this.syntax = "/wgpg ellipse <radiusX> <radiusZ> <minY> <maxY> [X] [Z] [world]";
+        this.minArgs = 5;
+        this.maxArgs = 8;
+        this.permission = "wgpg.generate.ellipse";
+    }
+
+
+    @Override
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {
 		return false;
 	}
 }

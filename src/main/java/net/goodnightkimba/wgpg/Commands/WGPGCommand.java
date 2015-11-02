@@ -12,73 +12,53 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class WGPGCommand implements CommandExecutor {
-	
-	/* 
-	 * /wgpg help
-	 * /wgpg reload
-	 * /wgpg <regionName> <radiusX> <radiusZ> <points> <offset> <minY> <maxY> [X] [Z] [world]
-	 * /wgpg circle <radius> <minY> <maxY> [X] [Z] [world]
-	 * /wgpg ecliptic <radiusX> <radiusZ> <minY> <maxY> [X] [Z] [world]  
-	 * /wgpg square <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world]
-	 * /wgpg rectangle <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world] 
-	 * 
-	 */
-	
+import java.util.ArrayList;
+
+public class WGPGCommand extends StandardCommand implements CommandExecutor {
+    ArrayList<StandardCommand> subCommands = new ArrayList<>();
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("wgpg")) {
-			
-			try {
-				if (args.length == 1 && args[0].equalsIgnoreCase("help")) {
-					WGPGSubCommandHelp wgpgHelpSub = new WGPGSubCommandHelp(sender, cmd, label, args);
-					return wgpgHelpSub.executeCommand();
-					
-				}
-				
-				if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
-					WGPGSubCommandReload wgpgReloadSub = new WGPGSubCommandReload(sender, cmd, label, args);
-					return wgpgReloadSub.executeCommand();
-				}
-				
-				if (args.length > 2 && ((args[0].equalsIgnoreCase("c") || (args[0].equalsIgnoreCase("circle"))))) {
-					WGPGSubCommandCircle wgpgCircleSub = new WGPGSubCommandCircle(sender, cmd, label, args);
-					return wgpgCircleSub.executeCommand();					
-				}
-				
-				if (args.length > 2 && ((args[0].equalsIgnoreCase("e") || (args[0].equalsIgnoreCase("ellipse"))))) {
-					WGPGSubCommandEllipse wgpgEllipseSub = new WGPGSubCommandEllipse(sender, cmd, label, args);
-					return wgpgEllipseSub.executeCommand();
-				}
-				
-				if (args.length > 2 && ((args[0].equalsIgnoreCase("s") || (args[0].equalsIgnoreCase("square"))))) {
-					WGPGSubCommandSquare wgpgSquareSub = new WGPGSubCommandSquare(sender, cmd, label, args);
-					return wgpgSquareSub.executeCommand();	
-				}
-				
-				if (args.length > 2 && ((args[0].equalsIgnoreCase("r") || (args[0].equalsIgnoreCase("rectangle"))))) {
-					WGPGSubCommandRectangle wgpgRectangleSub = new WGPGSubCommandRectangle(sender, cmd, label, args);
-					return wgpgRectangleSub.executeCommand();
-				}
-				
-				if (args.length >= 2) {
-					WGPGSubCommandPolygon wgpgPolySub = new WGPGSubCommandPolygon(sender, cmd, label, args);
-					return wgpgPolySub.executeCommand();				
-				}				
-				sender.sendMessage(Config.getString("wgpg-command"));
-				
-			} catch (UserInputException e) {
-				sender.sendMessage(e.getMessage());
-				return true;
-			} catch (UserPermissionException e) {
-				sender.sendMessage(e.getMessage());
-				return true;				
-			}
-		}
+        if (cmd.getName().equalsIgnoreCase("wgpg")) {
+            try {
+                StandardCommand standardCommand = null;
+                if (args.length > 0) {
+                    for (StandardCommand subCmd : this.subCommands) {
+                        if (subCmd.getName().equalsIgnoreCase(args[0]) || subCmd.getAliases().contains(args[0])) {
+                            standardCommand = subCmd;
+                        }
+                    }
+                }
+                if (standardCommand == null) {
+                    //Return help menu if no args or sub commands
+                    standardCommand = new WGPGSubCommandHelp();
+                }
+                if (!(standardCommand.getMinArgs() <= args.length) || !(standardCommand.getMaxArgs() >= args.length)) {
+                    sender.sendMessage(standardCommand.getSyntax());
+                    return true;
+                }
+                if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
+                    throw new UserPermissionException();
+                }
+                standardCommand.execute(sender, cmd, label, args);
+            } catch (UserInputException e) {
+                sender.sendMessage(e.getMessage());
+                return true;
+            } catch (UserPermissionException e) {
+                sender.sendMessage(e.getMessage());
+                return true;
+            }
+        }
 		return true;
 	}
+
+    public void registerSubCommand(WGPGCommand subCmd) {
+        this.subCommands.add(subCmd);
+    }
 	
-	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ, String points, String offset, String minY, String maxY, String inputX, String inputZ, String world, CommandSender sender) throws UserInputException {
+	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ,
+                                      String points, String offset, String minY, String maxY, String inputX,
+                                      String inputZ, String world, CommandSender sender) throws UserInputException {
+
 		WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
 		
 		iv.validatePolygonInput(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world);
@@ -88,14 +68,14 @@ public class WGPGCommand implements CommandExecutor {
 		int pointsFinal = Integer.parseInt(points);
 		int offsetFinal = Integer.parseInt(offset);
 		int minYFinal = Integer.parseInt(minY);
-		int maxYfinal = Integer.parseInt(maxY);
+		int maxYFinal = Integer.parseInt(maxY);
 		double inputXFinal = Double.parseDouble(inputX);
 		double inputZFinal = Double.parseDouble(inputZ);
 		World worldFinal = Bukkit.getWorld(world);
 		
 		Polygon poly = new Polygon(radiusXFinal, radiusZFinal, pointsFinal, offsetFinal, inputXFinal, inputZFinal);
 		
-		PolygonRegionCreator prc = new PolygonRegionCreator(regionName, worldFinal, poly.getPoints(), minYFinal, maxYfinal);
+		PolygonRegionCreator prc = new PolygonRegionCreator(regionName, worldFinal, poly.getPoints(), minYFinal, maxYFinal);
 		
 		if (sender instanceof Player) {
 			if (Config.addAsMember) {

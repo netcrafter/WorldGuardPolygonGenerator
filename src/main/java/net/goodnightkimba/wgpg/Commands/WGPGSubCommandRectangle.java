@@ -4,23 +4,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandRectangle extends WGPGCommand {
-	
-	private CommandSender sender;
-	private Command cmd;
-	private String label;
-	private String[] args;	
-	
-	public WGPGSubCommandRectangle(CommandSender sender, Command cmd, String label, String[] args) {
-		this.sender = sender;
-		this.cmd = cmd;
-		this.label = label;
-		this.args = args;
-	}
-	
-	public boolean executeCommand() {
-		return false;
-	}
+	public WGPGSubCommandRectangle() {
+        this.cmdName = "rectangle";
+        this.aliases.add("r");
+        this.syntax = "/wgpg rectangle <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world]";
+        this.minArgs = 6;
+        this.maxArgs = 9;
+        this.permission = "wgpg.generate.rectangle";
+    }
 
-	public static void main(String[] args) {
+	@Override
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {
+		return false;
 	}
 }

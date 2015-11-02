@@ -1,30 +1,20 @@
 package net.goodnightkimba.wgpg.commands;
 
 import net.goodnightkimba.wgpg.Config;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class WGPGSubCommandHelp extends WGPGCommand {
-	
-	protected CommandSender sender;
-	protected Command cmd;
-	protected String label;
-	protected String[] args;	
-	
-	protected WGPGSubCommandHelp(CommandSender sender, Command cmd, String label, String[] args) {
-		this.sender = sender;
-		this.cmd = cmd;
-		this.label = label;
-		this.args = args;
-	}
-	
-	protected boolean executeCommand() throws UserPermissionException {
-		if (sender instanceof Player) {
-			if (!sender.hasPermission("wgpg.help")) throw new UserPermissionException(); 
-		}	
+    public WGPGSubCommandHelp() {
+        this.cmdName = "help";
+        this.syntax = "/wgpg help";
+        this.minArgs = 0;
+        this.maxArgs = 1;
+        this.permission = "wgpg.help";
+    }
 
+    @Override
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException {
 		sender.sendMessage(helpMenu());
 		return true;
 	}

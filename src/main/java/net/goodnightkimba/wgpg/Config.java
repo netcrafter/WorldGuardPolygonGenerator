@@ -2,13 +2,12 @@ package net.goodnightkimba.wgpg;
 
 import java.io.InputStream;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
 public class Config {
-	private static final Logger LOGGER = Logger.getLogger("Minecraft");
 	private static Plugin plugin;
 	public static boolean overrideExistingRegion = false;
 	public static boolean addAsOwner = false;
@@ -26,28 +25,28 @@ public class Config {
 		plugin.saveDefaultConfig();
 		if (plugin.getConfig().get("override-existing-region") == null) {
 			plugin.getConfig().set("override-existing-region", false);
-			LOGGER.log(Level.WARNING, "Could\'t load \'override-existing-region\' from the configuration file! Using default value of \'false\' instead. ");
+			Bukkit.getLogger().log(Level.WARNING, "Could\'t load \'override-existing-region\' from the configuration file! Using default value of \'false\' instead. ");
 		} else {
 			Config.overrideExistingRegion = plugin.getConfig().getBoolean("override-existing-region");
 		}
 
 		if (plugin.getConfig().get("add-as-owner") == null) {
 			plugin.getConfig().set("add-as-owner", false);
-			LOGGER.log(Level.WARNING, "Could\'t load \'add-as-owner\' from the configuration file! Using default value of \'false\' instead. ");
+			Bukkit.getLogger().log(Level.WARNING, "Could\'t load \'add-as-owner\' from the configuration file! Using default value of \'false\' instead. ");
 		} else {
 			Config.addAsOwner = plugin.getConfig().getBoolean("add-as-owner");
 		}
 
 		if (plugin.getConfig().get("add-as-member") == null) {
 			plugin.getConfig().set("add-as-member", false);
-			LOGGER.log(Level.WARNING, "Could\'t load \'add-as-member\' from the configuration file! Using default value of \'false\' instead. ");
+			Bukkit.getLogger().log(Level.WARNING, "Could\'t load \'add-as-member\' from the configuration file! Using default value of \'false\' instead. ");
 		} else {
 			Config.addAsMember = plugin.getConfig().getBoolean("add-as-member");
 		}
 		
 		if (plugin.getConfig().get("lang") == null) {
 			plugin.getConfig().set("lang", "en");
-			LOGGER.log(Level.WARNING, "Could\'t load \'lang\' from the configuration file! Using default value of \'en\' instead. ");
+			Bukkit.getLogger().log(Level.WARNING, "Could\'t load \'lang\' from the configuration file! Using default value of \'en\' instead. ");
 		} else {
 			Config.lang = plugin.getConfig().getString("lang");
 		}
@@ -59,9 +58,7 @@ public class Config {
 		plugin.reloadConfig();
 		loadConfig();
 	}
-	
-	
-	
+
 	public static String getString(String id) {
 		String msg = Config.stringsConfig.getString(id);
 		

@@ -12,7 +12,17 @@ public class Polygon {
 	private int offSet = 0;
 	private double inputX = 0;
 	private double inputZ = 0;
-	
+
+	/**
+	 * Create a new polygon.
+     *
+	 * @param radiusX X radius
+	 * @param radiusZ Z radius
+	 * @param numPoints Number of points in the polygon
+	 * @param offset Offset in degrees.
+	 * @param inputX Centre X coord
+	 * @param inputZ Centre Z coord
+	 */
 	public Polygon(int radiusX, int radiusZ, int numPoints, int offset, double inputX, double inputZ) {
 		this.radiusX = radiusX;
 		this.radiusZ = radiusZ;
@@ -22,9 +32,9 @@ public class Polygon {
 		this.inputZ = inputZ;
 	}
 	
-	/* get the points of the polygon.
+	/** Get the coordinates of the points of the polygon.
 	 * 
-	 * @return List<BlockVector2D> with com.sk89q.worldedit.BlockVector2D object for each point.
+	 * @return List containing coordinates of points as BlockVector2D.
 	 */
 	public List<BlockVector2D> getPoints() {
 		List<BlockVector2D> polygonPoints = new ArrayList<>();
@@ -92,41 +102,4 @@ public class Polygon {
 	public void setRadiusX(int radiusX) {
 		this.radiusX = radiusX;
 	}
-}	
-	/*
-	 * 	public static boolean CirclePolygonGenerator(String regionName, int radiusX, int radiusZ, int numberPoints, int offSet, int minY, int maxY, World world, double xInput, double zInput, CommandSender sender) {
-		RegionManager regionmanager = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(world);
-		if (!(overrideExistingRegionCheck(regionmanager, regionName, sender))) {
-			return false;
-		}
-		if (list.isEmpty()) {
-			Polygon.message = "ArrayList<BlockVector2D> list empty. Couldn't create WGPG region!";
-			return false;
-		}
-t
-	}
-		protected static boolean overrideExistingRegionCheck(RegionManager regionmanager, String regionName, CommandSender sender) {
-		if (!(Config.overrideExistingRegion)) {
-			if (!(regionmanager.getRegion(regionName) == null)) {
-				if (sender == null) {
-					return Config.overrideExistingRegion;
-				} else {
-					if (sender instanceof Player) {
-						Player player = (Player) sender;
-						if (!(player.hasPermission("wgpg.generate.override"))) {
-							sender.sendMessage(ChatColor.DARK_RED + "You do not have permission to override existing regions.");
-							return false;
-						}
-						return true;
-					}
-					sender.sendMessage(ChatColor.RED + "The region \'" + regionName
-							+ "\' already exists! Enable override-existing-region in the config to override existing regions.");
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
-	 */
-
+}

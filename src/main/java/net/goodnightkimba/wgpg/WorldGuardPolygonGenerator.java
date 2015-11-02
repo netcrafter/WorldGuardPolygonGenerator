@@ -4,7 +4,7 @@
  */
 package net.goodnightkimba.wgpg;
 
-import net.goodnightkimba.wgpg.commands.WGPGCommand;
+import net.goodnightkimba.wgpg.commands.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -37,8 +37,16 @@ public final class WorldGuardPolygonGenerator extends JavaPlugin {
 		}
 		WorldGuardPolygonGenerator.config = new Config(this);
 		config.loadConfig();
-		
-		getCommand("wgpg").setExecutor(new WGPGCommand());
+
+        WGPGCommand wgpg = new WGPGCommand();
+        wgpg.registerSubCommand(new WGPGSubCommandHelp());
+        wgpg.registerSubCommand(new WGPGSubCommandReload());
+        wgpg.registerSubCommand(new WGPGSubCommandCircle());
+        wgpg.registerSubCommand(new WGPGSubCommandEllipse());
+        wgpg.registerSubCommand(new WGPGSubCommandSquare());
+        wgpg.registerSubCommand(new WGPGSubCommandRectangle());
+        wgpg.registerSubCommand(new WGPGSubCommandPolygon());
+		getCommand("wgpg").setExecutor(wgpg);
 	}
 
 	private WorldGuardPlugin getWorldGuard() {

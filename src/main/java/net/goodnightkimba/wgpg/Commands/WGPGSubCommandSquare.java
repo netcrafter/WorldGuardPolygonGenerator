@@ -4,20 +4,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandSquare extends WGPGCommand {
-	
-	private CommandSender sender;
-	private Command cmd;
-	private String label;
-	private String[] args;	
-	
-	public WGPGSubCommandSquare(CommandSender sender, Command cmd, String label, String[] args) {
-		this.sender = sender;
-		this.cmd = cmd;
-		this.label = label;
-		this.args = args;
-	}
-	
-	public boolean executeCommand() {
+    public WGPGSubCommandSquare() {
+        this.cmdName = "square";
+        this.aliases.add("s");
+        this.syntax = "/wgpg square <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world]";
+        this.minArgs = 6;
+        this.maxArgs = 9;
+        this.permission = "wgpg.generate.square";
+    }
+
+    @Override
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {
 		return false;
 	}
 }

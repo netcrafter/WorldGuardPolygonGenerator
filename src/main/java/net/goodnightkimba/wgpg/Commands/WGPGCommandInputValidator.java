@@ -108,7 +108,7 @@ public class WGPGCommandInputValidator extends InputValidator {
 		
 		if (!min(numberPoints, 1)) throw new UserInputException("too-small", input, "1", "numPoints");
 			
-		if (!max(numberPoints, 360)) throw new UserInputException("too-large", input, "360", "numPoints");
+		if (!max(numberPoints, 720)) throw new UserInputException("too-large", input, "360", "numPoints");
 			
 		return true;
 	}
@@ -120,7 +120,7 @@ public class WGPGCommandInputValidator extends InputValidator {
 		
 		if (!min(offset, 0)) throw new UserInputException("too-small", input, "0", "offset");		
 		
-		if (!max(offset, 720)) throw new UserInputException("too-large", input, "720", "offset");	
+		if (!max(offset, 360)) throw new UserInputException("too-large", input, "720", "offset");
 		
 		return true;
 	}

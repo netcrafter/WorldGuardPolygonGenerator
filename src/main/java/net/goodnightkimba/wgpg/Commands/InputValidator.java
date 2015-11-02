@@ -46,8 +46,7 @@ public class InputValidator {
 	}
 	
 	public boolean worldName(String world) {
-		if (Bukkit.getWorld(world) != null) return true;
-		return false;
+		return (Bukkit.getWorld(world) != null);
 	}
 	
 	public boolean regionName(String regionName) {
@@ -66,8 +65,6 @@ public class InputValidator {
 		
 		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
 		
-		if (rm.getRegion(regionName) == null) return true; //region doesn't exist
-		
-		return false;
+		return (rm.getRegion(regionName) == null);
 	}	
 }
