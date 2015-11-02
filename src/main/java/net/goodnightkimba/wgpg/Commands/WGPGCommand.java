@@ -82,8 +82,7 @@ public class WGPGCommand implements CommandExecutor {
 		WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
 		
 		iv.validatePolygonInput(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world);
-		
-		String regionNameFinal = regionName;
+
 		int radiusXFinal = Integer.parseInt(radiusX); 
 		int radiusZFinal = Integer.parseInt(radiusZ);
 		int pointsFinal = Integer.parseInt(points);
@@ -96,7 +95,7 @@ public class WGPGCommand implements CommandExecutor {
 		
 		Polygon poly = new Polygon(radiusXFinal, radiusZFinal, pointsFinal, offsetFinal, inputXFinal, inputZFinal);
 		
-		PolygonRegionCreator prc = new PolygonRegionCreator(regionNameFinal, worldFinal, poly.getPoints(), minYFinal, maxYfinal);
+		PolygonRegionCreator prc = new PolygonRegionCreator(regionName, worldFinal, poly.getPoints(), minYFinal, maxYfinal);
 		
 		if (sender instanceof Player) {
 			if (Config.addAsMember) {
@@ -112,14 +111,14 @@ public class WGPGCommand implements CommandExecutor {
 			prc.save();
 		} catch (StorageException e) {
 			e.printStackTrace();
-			StringProcesser sp = new StringProcesser(Config.getString("region-save-error"));
+			StringProcessor sp = new StringProcessor(Config.getString("region-save-error"));
 			sp.processColor();
 
 			sender.sendMessage(sp.getString());
 			return;
 		}
 		
-		StringProcesser sp = new StringProcesser(Config.getString("region-created-successfully"));
+		StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
 		sp.processColor();
 		
 		sender.sendMessage(sp.getString());

@@ -1,10 +1,10 @@
 package net.goodnightkimba.wgpg.commands;
 
-public class StringProcesser {
+public class StringProcessor {
 	
 	private String string = "";
 	
-	public StringProcesser(String string) {
+	public StringProcessor(String string) {
 		this.string = string;
 	}
 	

@@ -31,7 +31,7 @@ public class WGPGSubCommandHelp extends WGPGCommand {
 
 	private String helpMenu() {
 		String menu = Config.getString("wgpg-help-menu");
-		StringProcesser sp = new StringProcesser(menu);
+		StringProcessor sp = new StringProcessor(menu);
 		sp.processColor();
 		return sp.getString();
 	}

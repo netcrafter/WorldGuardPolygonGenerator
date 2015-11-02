@@ -18,7 +18,7 @@ public class UserInputException extends Exception {
 		
 		this.errorMessage = Config.getString(error);
 		
-		StringProcesser sp = new StringProcesser(this.errorMessage);
+		StringProcessor sp = new StringProcessor(this.errorMessage);
 		sp.processColor();
 		this.errorMessage = sp.getString();
 	}
@@ -28,7 +28,7 @@ public class UserInputException extends Exception {
 		
 		this.errorMessage = Config.getString(error);
 		
-		StringProcesser sp = new StringProcesser(this.errorMessage);
+		StringProcessor sp = new StringProcessor(this.errorMessage);
 		sp.processColor();
 		sp.processVar("{field}", field);
 		sp.processVar("{value}", value);

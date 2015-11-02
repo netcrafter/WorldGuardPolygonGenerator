@@ -4,19 +4,18 @@
  */
 package net.goodnightkimba.wgpg;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import net.goodnightkimba.wgpg.commands.WGPGCommand;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
+import java.util.logging.Level;
+
 public final class WorldGuardPolygonGenerator extends JavaPlugin {
-	private static final Logger LOGGER = Logger.getLogger("Minecraft");
 	public static final String PREFIX = "[WGPG] ";
 	public static WorldGuardPlugin WGBukkit = null;
 	public static WorldEditPlugin WEBukkit = null;
@@ -27,13 +26,13 @@ public final class WorldGuardPolygonGenerator extends JavaPlugin {
 	public void onEnable() {
 		WGBukkit = getWorldGuard();
 		if (WGBukkit == null) {
-			LOGGER.log(Level.SEVERE, PREFIX + "Couldn\'t load WorldGuard. Disabling WGPG");
+			Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldGuard. Disabling WGPG");
 			onDisable();
 		}
 		
 		WEBukkit = getWorldEdit();
 		if (WEBukkit == null) {
-			LOGGER.log(Level.SEVERE, PREFIX + "Couldn\'t load WorldEdit. Disabling WGPG");
+			Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldEdit. Disabling WGPG");
 			onDisable();
 		}
 		WorldGuardPolygonGenerator.config = new Config(this);

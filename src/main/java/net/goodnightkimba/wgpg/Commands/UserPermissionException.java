@@ -11,7 +11,7 @@ public class UserPermissionException extends Exception {
 	public UserPermissionException() {
 		this.errorMessage = Config.getString("permission-denided-cmd");
 		
-		StringProcesser sp = new StringProcesser(this.errorMessage);
+		StringProcessor sp = new StringProcessor(this.errorMessage);
 		sp.processColor();
 		this.errorMessage = sp.getString();
 	}
