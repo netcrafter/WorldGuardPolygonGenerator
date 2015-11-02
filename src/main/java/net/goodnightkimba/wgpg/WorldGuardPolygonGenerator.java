@@ -13,12 +13,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 public final class WorldGuardPolygonGenerator extends JavaPlugin {
 	public static final String PREFIX = "[WGPG] ";
 	public static WorldGuardPlugin WGBukkit = null;
 	public static WorldEditPlugin WEBukkit = null;
+    public static ArrayList<StandardCommand> commandList = new ArrayList<>();
 
 	public static Config config;
 	
@@ -47,6 +49,7 @@ public final class WorldGuardPolygonGenerator extends JavaPlugin {
         wgpg.registerSubCommand(new WGPGSubCommandRectangle());
         wgpg.registerSubCommand(new WGPGSubCommandPolygon());
 		getCommand("wgpg").setExecutor(wgpg);
+        commandList.addAll(wgpg.getSubCommands());
 	}
 
 	private WorldGuardPlugin getWorldGuard() {

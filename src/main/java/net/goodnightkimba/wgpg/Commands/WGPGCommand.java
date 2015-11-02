@@ -54,6 +54,10 @@ public class WGPGCommand extends StandardCommand implements CommandExecutor {
     public void registerSubCommand(WGPGCommand subCmd) {
         this.subCommands.add(subCmd);
     }
+
+    public ArrayList<StandardCommand> getSubCommands() {
+        return this.subCommands;
+    }
 	
 	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ,
                                       String points, String offset, String minY, String maxY, String inputX,
