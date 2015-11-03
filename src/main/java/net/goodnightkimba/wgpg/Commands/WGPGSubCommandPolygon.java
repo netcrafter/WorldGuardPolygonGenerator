@@ -38,8 +38,8 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
             inputZ = args[9];
             world = args[10];
 		}
-
-		super.processPolygonArgs(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world, sender);
+        validatePolyArgs(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world, sender);
+		processPolygonArgs(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world, sender);
 		return true;
 	}
 }

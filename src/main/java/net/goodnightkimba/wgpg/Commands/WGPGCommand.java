@@ -66,13 +66,12 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     public ArrayList<StandardCommand> getSubCommands() {
         return this.subCommands;
     }
-	
-	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ,
-                                      String points, String offset, String minY, String maxY, String inputX,
-                                      String inputZ, String world, CommandSender sender) throws UserInputException {
 
-		WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
-		iv.validRegionName(regionName);
+    protected void validatePolyArgs(String regionName, String radiusX, String radiusZ,
+                                    String points, String offset, String minY, String maxY, String inputX,
+                                    String inputZ, String world, CommandSender sender) throws UserInputException {
+        WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
+        iv.validRegionName(regionName);
         iv.validRadiusX(radiusX);
         iv.validRadiusZ(radiusZ);
         iv.validNumberOfPoints(points);
@@ -83,47 +82,48 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
         iv.validCentreX(inputX);
         iv.validCentreZ(inputZ);
         iv.validWorld(world);
-        iv.allowOverrideRegion(regionName,world,sender);
+        iv.allowOverrideRegion(regionName, world, sender);
+    }
 
-		int radiusXFinal = Integer.parseInt(radiusX); 
-		int radiusZFinal = Integer.parseInt(radiusZ);
-		int pointsFinal = Integer.parseInt(points);
-		int offsetFinal = Integer.parseInt(offset);
-		int minYFinal = Integer.parseInt(minY);
-		int maxYFinal = Integer.parseInt(maxY);
-		double inputXFinal = Double.parseDouble(inputX);
-		double inputZFinal = Double.parseDouble(inputZ);
-		World worldFinal = Bukkit.getWorld(world);
-		
-		Polygon poly = new Polygon(radiusXFinal, radiusZFinal, pointsFinal, offsetFinal, inputXFinal, inputZFinal);
-		
-		PolygonRegionCreator prc = new PolygonRegionCreator(regionName, worldFinal, poly.getPoints(), minYFinal, maxYFinal);
-		
-		if (sender instanceof Player) {
-			if (Config.addAsMember) {
-				prc.setMember((Player) sender);
-			}
-
-			if (Config.addAsOwner) {
-				prc.setOwner((Player) sender);
-			}
-		}
-
-		try {
-			prc.save();
-		} catch (StorageException e) {
-			e.printStackTrace();
-			StringProcessor sp = new StringProcessor(Config.getString("region-save-error"));
-			sp.processColor();
-
-			sender.sendMessage(sp.getString());
-			return;
-		}
-		
-		StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
-		sp.processColor();
-		sender.sendMessage(sp.getString());
+	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ,
+                                      String points, String offset, String minY, String maxY, String inputX,
+                                      String inputZ, String world, CommandSender sender) {
+        processPolygon(regionName, Integer.parseInt(radiusX), Integer.parseInt(radiusZ), Integer.parseInt(points),
+                Integer.parseInt(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
+                Double.parseDouble(inputZ), Bukkit.getWorld(world), sender);
 	}
+
+    protected void processPolygon(String regionName, int radiusX, int radiusZ,
+                                  int points, int offset, int minY, int maxY, double inputX,
+                                  double inputZ, World world, CommandSender sender) {
+        Polygon poly = new Polygon(radiusX, radiusZ, points, offset,inputX, inputZ);
+        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getPoints(), minY, maxY);
+
+        if (sender instanceof Player) {
+            if (Config.addAsMember) {
+                prc.setMember((Player) sender);
+            }
+
+            if (Config.addAsOwner) {
+                prc.setOwner((Player) sender);
+            }
+        }
+
+        try {
+            prc.save();
+        } catch (StorageException e) {
+            e.printStackTrace();
+            StringProcessor sp = new StringProcessor(Config.getString("region-save-error"));
+            sp.processColor();
+
+            sender.sendMessage(sp.getString());
+            return;
+        }
+
+        StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
+        sp.processColor();
+        sender.sendMessage(sp.getString());
+    }
 
     @Override
     public String getName() {
