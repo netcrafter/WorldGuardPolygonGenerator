@@ -8,10 +8,6 @@ public class UserInputException extends Exception {
 	
 	protected String error = "invalidInput";
 	protected String errorMessage = "Invalid command. /help for help";
-
-	public UserInputException() {
-
-	}
 	
 	public UserInputException(String error) {
 		this.error = error;

@@ -2,7 +2,6 @@ package net.goodnightkimba.wgpg.commands;
 
 import java.util.regex.Pattern;
 
-import net.goodnightkimba.wgpg.Config;
 import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 
 import org.bukkit.Bukkit;
@@ -51,20 +50,13 @@ public class InputValidator {
 	
 	public boolean regionName(String regionName) {
 		if (regionName.equalsIgnoreCase("__global__")) return false;
-		
 		Pattern idPattern = Pattern.compile("^[A-Za-z0-9_,'\\-\\+/]{1,}$");
-		
 		return idPattern.matcher(regionName).matches();
 	}
 	
 	public boolean regionExists(String regionName, String world) throws UserInputException {
-		
-		if (Config.overrideExistingRegion) return true;
-		
 		if (!(worldName(world))) throw new UserInputException("invalid-world", world, "World Name", "world");
-		
 		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
-		
 		return (rm.getRegion(regionName) == null);
 	}	
 }

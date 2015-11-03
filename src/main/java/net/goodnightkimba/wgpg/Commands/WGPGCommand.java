@@ -51,7 +51,7 @@ public class WGPGCommand extends StandardCommand implements CommandExecutor {
 		return true;
 	}
 
-    public void registerSubCommand(WGPGCommand subCmd) {
+    public void registerSubCommand(StandardCommand subCmd) {
         this.subCommands.add(subCmd);
     }
 
@@ -64,8 +64,18 @@ public class WGPGCommand extends StandardCommand implements CommandExecutor {
                                       String inputZ, String world, CommandSender sender) throws UserInputException {
 
 		WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
-		
-		iv.validatePolygonInput(regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world);
+		iv.validRegionName(regionName);
+        iv.validRadiusX(radiusX);
+        iv.validRadiusZ(radiusZ);
+        iv.validNumberOfPoints(points);
+        iv.validOffSet(offset);
+        iv.validMinY(minY);
+        iv.validMaxY(maxY);
+        iv.validRangeY(minY, maxY);
+        iv.validCentreX(inputX);
+        iv.validCentreZ(inputZ);
+        iv.validWorld(world);
+        iv.allowOverrideRegion(regionName,world,sender);
 
 		int radiusXFinal = Integer.parseInt(radiusX); 
 		int radiusZFinal = Integer.parseInt(radiusZ);

@@ -16,7 +16,6 @@ public class UserPermissionException extends Exception {
 		this.errorMessage = sp.getString();
 	}
 
-
 	public String getMessage() {
 		return this.errorMessage;
 	}
