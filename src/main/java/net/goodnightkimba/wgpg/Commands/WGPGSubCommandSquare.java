@@ -5,12 +5,11 @@ import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandSquare extends WGPGCommand {
     public WGPGSubCommandSquare() {
-        this.cmdName = "square";
-        this.aliases.add("s");
-        this.syntax = "/wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]";
-        this.minArgs = 4;
-        this.maxArgs = 8;
-        this.permission = "wgpg.generate.square";
+        setName("square");
+        addAlias("s");
+        setSyntax("/wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]");
+        setArgRange(4, 8);
+        setPermission("wgpg.generate.square");
     }
 
     @Override

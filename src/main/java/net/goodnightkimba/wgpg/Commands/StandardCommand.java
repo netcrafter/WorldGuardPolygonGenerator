@@ -3,41 +3,32 @@ package net.goodnightkimba.wgpg.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class StandardCommand {
-    protected String cmdName = "wgpg";
-    protected ArrayList<String> aliases = new ArrayList<>();
-    protected String syntax = "/wgpg";
-    protected int minArgs = 0;
-    protected int maxArgs = 0;
-    protected String permission = "";
+public interface StandardCommand {
+    String getName();
 
-    public String getName() {
-        return this.cmdName;
-    }
+    void setName(String name);
 
-    public ArrayList<String> getAliases() {
-        return this.aliases;
-    }
+    List<String> getAliases();
 
-    public String getSyntax() {
-        return this.syntax;
-    }
+    void addAlias(String alias);
 
-    public int getMinArgs() {
-        return this.minArgs;
-    }
+    void setAliases(List<String> aliases);
 
-    public int getMaxArgs() {
-        return this.maxArgs;
-    }
+    String getSyntax();
 
-    public String getPermission() {
-        return this.permission;
-    }
+    void setSyntax(String syntax);
 
-    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException {
-        return false;
-    }
+    int getMinArgs();
+
+    int getMaxArgs();
+
+    void setArgRange(int min, int max);
+
+    String getPermission();
+
+    void setPermission(String permission);
+
+    boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException;
 }

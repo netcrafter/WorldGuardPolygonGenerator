@@ -8,11 +8,10 @@ import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandReload extends WGPGCommand {
     public WGPGSubCommandReload() {
-        this.cmdName = "reload";
-        this.syntax = "/wgpg reload";
-        this.minArgs = 1;
-        this.maxArgs = 1;
-        this.permission = "wgpg.reload";
+        setName("reload");
+        setSyntax("/wgpg reload");
+        setArgRange(1, 1);
+        setPermission("wgpg.reload");
     }
 
 	@Override

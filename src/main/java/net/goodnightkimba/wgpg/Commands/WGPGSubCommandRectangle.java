@@ -5,12 +5,11 @@ import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandRectangle extends WGPGCommand {
 	public WGPGSubCommandRectangle() {
-        this.cmdName = "rectangle";
-        this.aliases.add("r");
-        this.syntax = "/wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]";
-        this.minArgs = 6;
-        this.maxArgs = 9;
-        this.permission = "wgpg.generate.rectangle";
+        setName("rectangle");
+        addAlias("r");
+        setSyntax("/wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]");
+        setArgRange(6, 9);
+        setPermission("wgpg.generate.rectangle");
     }
 
 	@Override

@@ -13,10 +13,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class WGPGCommand extends StandardCommand implements CommandExecutor {
-    ArrayList<StandardCommand> subCommands = new ArrayList<>();
+public class WGPGCommand implements CommandExecutor, StandardCommand {
+    private String cmdName = "wgpg";
+    private List<String> aliases = new ArrayList<>();
+    private String syntax = "/wgpg";
+    private int minArgs = 0;
+    private int maxArgs = 0;
+    private String permission = "wgpg.generate.polygon";
+    private ArrayList<StandardCommand> subCommands = new ArrayList<>();
 
+    @Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("wgpg")) {
             try {
@@ -114,7 +122,73 @@ public class WGPGCommand extends StandardCommand implements CommandExecutor {
 		
 		StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
 		sp.processColor();
-		
 		sender.sendMessage(sp.getString());
 	}
+
+    @Override
+    public String getName() {
+        return this.cmdName;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.cmdName = name;
+    }
+
+    @Override
+    public List<String> getAliases() {
+        return this.aliases;
+    }
+
+    @Override
+    public void addAlias(String alias) {
+        this.aliases.add(alias);
+    }
+
+    @Override
+    public void setAliases(List<String> aliases) {
+        this.aliases = aliases;
+    }
+
+    @Override
+    public String getSyntax() {
+        return this.syntax;
+    }
+
+    @Override
+    public void setSyntax(String syntax) {
+        this.syntax = syntax;
+    }
+
+    @Override
+    public int getMinArgs() {
+        return this.minArgs;
+    }
+
+    @Override
+    public int getMaxArgs() {
+        return this.maxArgs;
+    }
+
+    @Override
+    public void setArgRange(int min, int max) {
+        this.minArgs = min;
+        this.maxArgs = max;
+    }
+
+    @Override
+    public String getPermission() {
+        return this.permission;
+    }
+
+    @Override
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
+
+    @Override
+    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException {
+        onCommand(sender, cmd, label, args);
+        return true;
+    }
 }

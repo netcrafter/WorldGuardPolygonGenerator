@@ -6,12 +6,11 @@ import org.bukkit.entity.Player;
 
 public class WGPGSubCommandPolygon extends WGPGCommand {
     public WGPGSubCommandPolygon() {
-        this.cmdName = "polygon";
-        this.aliases.add("p");
-        this.syntax = "/wgpg polygon <regionName> <radiusX> <radiusZ> <points> <minY> <maxY> [offset] [X] [Z] [world]";
-        this.minArgs = 7;
-        this.maxArgs = 11;
-        this.permission = "wgpg.generate.polygon";
+        setName("polygon");
+        addAlias("p");
+        setSyntax("/wgpg polygon <regionName> <radiusX> <radiusZ> <points> <minY> <maxY> [offset] [X] [Z] [world]");
+        setArgRange(7, 11);
+        setPermission("wgpg.generate.polygon");
     }
 
     @Override
@@ -33,7 +32,7 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
             inputZ = (args.length >= 10) ? args[9] : String.valueOf(player.getLocation().getZ());
             world = (args.length >= 11) ? args[10] : player.getWorld().getName();
 		} else {
-            if (args.length != 11) throw new UserInputException(this.syntax);
+            if (args.length != 11) throw new UserInputException(getSyntax());
             offset = args[7];
             inputX = args[8];
             inputZ = args[9];

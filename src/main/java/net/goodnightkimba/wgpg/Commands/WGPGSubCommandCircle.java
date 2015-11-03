@@ -5,12 +5,11 @@ import org.bukkit.command.CommandSender;
 
 public class WGPGSubCommandCircle extends WGPGCommand {
     public WGPGSubCommandCircle() {
-        this.cmdName = "circle";
-        this.aliases.add("c");
-        this.syntax = "/wgpg circle <radius> <minY> <maxY> [X] [Z] [world]";
-        this.minArgs = 4;
-        this.maxArgs = 7;
-        this.permission = "wgpg.generate.circle";
+        setName("circle");
+        addAlias("c");
+        setSyntax("/wgpg circle <radius> <minY> <maxY> [X] [Z] [world]");
+        setArgRange(4, 7);
+        setPermission("wgpg.generate.circle");
     }
 
     @Override
