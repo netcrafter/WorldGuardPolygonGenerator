@@ -17,7 +17,7 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
     @Override
 	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException {
 
-		String regionName, radiusX, radiusZ, points, offset, minY, maxY, inputX, inputZ, world;
+		String regionName, radiusX, radiusZ, points, minY, maxY, offset, inputX, inputZ, world;
 
 		regionName = args[1];
 		radiusX = args[2];
@@ -28,47 +28,12 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			switch (args.length) {
-                case 7:
-                    offset = "0";
-                    world = player.getWorld().getName();
-                    inputX = String.valueOf(player.getLocation().getX());
-                    inputZ = String.valueOf(player.getLocation().getZ());
-                    break;
-                case 8:
-                    offset = args[7];
-                    world = player.getWorld().getName();
-                    inputX = String.valueOf(player.getLocation().getX());
-                    inputZ = String.valueOf(player.getLocation().getZ());
-                    break;
-                case 9:
-                    offset = args[7];
-                    inputX = args[8];
-                    inputZ = String.valueOf(player.getLocation().getZ());
-                    world = player.getWorld().getName();
-                    break;
-                case 10:
-                    offset = args[7];
-                    inputX = args[8];
-                    inputZ = args[9];
-                    world = player.getWorld().getName();
-                    break;
-                case 11:
-                    offset = args[7];
-                    inputX = args[8];
-                    inputZ = args[9];
-                    world = args[10];
-                    break;
-                default:
-                    offset = "0";
-                    inputX = "0";
-                    inputZ = "0";
-                    world = "world";
-            }
+            offset = (args.length >= 8) ? args[7] : "0";
+            inputX = (args.length >= 9) ? args[8] : String.valueOf(player.getLocation().getX());
+            inputZ = (args.length >= 10) ? args[9] : String.valueOf(player.getLocation().getZ());
+            world = (args.length >= 11) ? args[10] : player.getWorld().getName();
 		} else {
-            if (args.length != 11) {
-                throw new UserInputException(this.syntax);
-            }
+            if (args.length != 11) throw new UserInputException(this.syntax);
             offset = args[7];
             inputX = args[8];
             inputZ = args[9];
