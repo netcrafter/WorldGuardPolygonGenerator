@@ -2,6 +2,7 @@ package net.goodnightkimba.wgpg.commands;
 
 import net.goodnightkimba.wgpg.Config;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 
 public class WGPGCommandInputValidator extends InputValidator {
 
@@ -29,11 +30,12 @@ public class WGPGCommandInputValidator extends InputValidator {
 
     public boolean allowOverrideRegion(String input, String world, CommandSender sender) throws UserInputException {
         if (regionExists(input, world)) {
-            if (Config.overrideExistingRegion || sender.hasPermission("wgpg.generate.override")) {
+            if (Config.overrideExistingRegion || sender.hasPermission("wgpg.generate.override") || sender instanceof ConsoleCommandSender) {
                 return true;
             }
+            throw new UserInputException("region-exists", input, "Region Name", "regionName");
         }
-        throw new UserInputException("region-exists", input, "Region Name", "regionName");
+        return false;
     }
 
     public boolean validMinY(String input) throws UserInputException {

@@ -32,12 +32,12 @@ public class WGPGCommand extends StandardCommand implements CommandExecutor {
                     //Return help menu if no args or sub commands
                     standardCommand = new WGPGSubCommandHelp();
                 }
+                if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
+                    throw new UserPermissionException();
+                }
                 if (!(standardCommand.getMinArgs() <= args.length) || !(standardCommand.getMaxArgs() >= args.length)) {
                     sender.sendMessage(standardCommand.getSyntax());
                     return true;
-                }
-                if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
-                    throw new UserPermissionException();
                 }
                 standardCommand.execute(sender, cmd, label, args);
             } catch (UserInputException e) {

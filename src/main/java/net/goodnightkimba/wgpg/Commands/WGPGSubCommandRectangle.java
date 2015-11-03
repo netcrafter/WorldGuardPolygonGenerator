@@ -7,7 +7,7 @@ public class WGPGSubCommandRectangle extends WGPGCommand {
 	public WGPGSubCommandRectangle() {
         this.cmdName = "rectangle";
         this.aliases.add("r");
-        this.syntax = "/wgpg rectangle <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world]";
+        this.syntax = "/wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]";
         this.minArgs = 6;
         this.maxArgs = 9;
         this.permission = "wgpg.generate.rectangle";

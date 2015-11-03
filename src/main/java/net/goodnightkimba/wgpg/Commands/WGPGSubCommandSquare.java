@@ -7,9 +7,9 @@ public class WGPGSubCommandSquare extends WGPGCommand {
     public WGPGSubCommandSquare() {
         this.cmdName = "square";
         this.aliases.add("s");
-        this.syntax = "/wgpg square <radiusX> <radiusZ> <offset> <minY> <maxY> [X] [Z] [world]";
-        this.minArgs = 6;
-        this.maxArgs = 9;
+        this.syntax = "/wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]";
+        this.minArgs = 4;
+        this.maxArgs = 8;
         this.permission = "wgpg.generate.square";
     }
 

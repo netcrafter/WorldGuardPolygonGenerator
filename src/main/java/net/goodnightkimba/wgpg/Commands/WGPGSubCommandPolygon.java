@@ -57,7 +57,7 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
             }
 		} else {
             if (args.length != 11) {
-                throw new UserInputException("wgpg-command");
+                throw new UserInputException(this.syntax);
             }
 
             inputX = args[8];
