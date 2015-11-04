@@ -1,6 +1,7 @@
 package net.goodnightkimba.wgpg.command;
 
 import net.goodnightkimba.wgpg.Config;
+import net.goodnightkimba.wgpg.command.StringProcessor;
 
 public class CommandInputException extends Exception {
 

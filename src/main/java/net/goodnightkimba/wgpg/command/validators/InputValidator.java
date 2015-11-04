@@ -1,9 +1,10 @@
-package net.goodnightkimba.wgpg.command;
+package net.goodnightkimba.wgpg.command.validators;
 
 import java.util.regex.Pattern;
 
 import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 
+import net.goodnightkimba.wgpg.command.CommandInputException;
 import org.bukkit.Bukkit;
 
 import com.sk89q.worldguard.protection.managers.RegionManager;

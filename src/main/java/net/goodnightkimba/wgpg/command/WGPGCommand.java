@@ -2,7 +2,8 @@ package net.goodnightkimba.wgpg.command;
 
 import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.wgpg.Config;
-import net.goodnightkimba.wgpg.command.wgpgsubcommands.HelpSubCommand;
+import net.goodnightkimba.wgpg.command.validators.WGPGCommandInputValidator;
+import net.goodnightkimba.wgpg.command.subcommands.HelpSubCommand;
 import net.goodnightkimba.wgpg.region.Polygon;
 import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 

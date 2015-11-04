@@ -1,4 +1,4 @@
-package net.goodnightkimba.wgpg.command.wgpgsubcommands;
+package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;

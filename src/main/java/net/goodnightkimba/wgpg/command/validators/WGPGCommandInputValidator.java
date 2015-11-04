@@ -1,6 +1,7 @@
-package net.goodnightkimba.wgpg.command;
+package net.goodnightkimba.wgpg.command.validators;
 
 import net.goodnightkimba.wgpg.Config;
+import net.goodnightkimba.wgpg.command.CommandInputException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 

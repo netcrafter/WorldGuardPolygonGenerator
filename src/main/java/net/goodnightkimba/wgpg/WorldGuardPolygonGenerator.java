@@ -6,7 +6,7 @@ package net.goodnightkimba.wgpg;
 
 import net.goodnightkimba.wgpg.command.*;
 
-import net.goodnightkimba.wgpg.command.wgpgsubcommands.*;
+import net.goodnightkimba.wgpg.command.subcommands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
