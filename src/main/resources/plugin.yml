@@ -16,7 +16,7 @@ permissions:
      decription: Permission to use /wgpg ellipse <radiusX> <radiusZ> <minY> <maxY> [X] [Z] [world]
      default: op
    wgpg.generate.circle:
-     decription: Permission to use /wgpg circle <radius> <minY> <maxY> [X] [Z] [world]
+     decription: Permission to use /wgpg circle <regionName> <radius> <minY> <maxY> [X] [Z] [world]
      default: op
    wgpg.generate.rectangle:
      decription: Permission to use /wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]
