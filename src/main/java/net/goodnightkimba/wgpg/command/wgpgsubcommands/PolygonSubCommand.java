@@ -7,8 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class WGPGSubCommandPolygon extends WGPGCommand {
-    public WGPGSubCommandPolygon() {
+public class PolygonSubCommand extends WGPGCommand {
+    public PolygonSubCommand() {
         setName("polygon");
         addAlias("p");
         setSyntax("/wgpg polygon <regionName> <radiusX> <radiusZ> <points> <minY> <maxY> [offset] [X] [Z] [world]");

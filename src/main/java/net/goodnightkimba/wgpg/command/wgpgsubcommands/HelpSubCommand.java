@@ -10,8 +10,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class WGPGSubCommandHelp extends WGPGCommand {
-    public WGPGSubCommandHelp() {
+public class HelpSubCommand extends WGPGCommand {
+    public HelpSubCommand() {
         setName("help");
         setSyntax("/wgpg help");
         setArgRange(0, 1);

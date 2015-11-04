@@ -4,15 +4,14 @@ import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class WGPGSubCommandEllipse extends WGPGCommand {
-    public WGPGSubCommandEllipse() {
-        setName("ellipse");
-        addAlias("e");
-        setSyntax("/wgpg ellipse <radiusX> <radiusZ> <minY> <maxY> [X] [Z] [world]");
-        setArgRange(5, 8);
-        setPermission("wgpg.generate.ellipse");
+public class SquareSubCommand extends WGPGCommand {
+    public SquareSubCommand() {
+        setName("square");
+        addAlias("s");
+        setSyntax("/wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]");
+        setArgRange(4, 8);
+        setPermission("wgpg.generate.square");
     }
-
 
     @Override
 	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {

@@ -7,8 +7,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class WGPGSubCommandReload extends WGPGCommand {
-    public WGPGSubCommandReload() {
+public class ReloadSubCommand extends WGPGCommand {
+    public ReloadSubCommand() {
         setName("reload");
         setSyntax("/wgpg reload");
         setArgRange(1, 1);

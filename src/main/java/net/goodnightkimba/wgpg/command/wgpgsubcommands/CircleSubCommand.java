@@ -4,8 +4,8 @@ import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class WGPGSubCommandCircle extends WGPGCommand {
-    public WGPGSubCommandCircle() {
+public class CircleSubCommand extends WGPGCommand {
+    public CircleSubCommand() {
         setName("circle");
         addAlias("c");
         setSyntax("/wgpg circle <radius> <minY> <maxY> [X] [Z] [world]");

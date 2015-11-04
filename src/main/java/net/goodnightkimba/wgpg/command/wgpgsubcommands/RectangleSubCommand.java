@@ -4,8 +4,8 @@ import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class WGPGSubCommandRectangle extends WGPGCommand {
-	public WGPGSubCommandRectangle() {
+public class RectangleSubCommand extends WGPGCommand {
+	public RectangleSubCommand() {
         setName("rectangle");
         addAlias("r");
         setSyntax("/wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]");

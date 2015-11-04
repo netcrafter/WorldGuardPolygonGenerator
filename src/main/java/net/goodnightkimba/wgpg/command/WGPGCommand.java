@@ -2,7 +2,7 @@ package net.goodnightkimba.wgpg.command;
 
 import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.wgpg.Config;
-import net.goodnightkimba.wgpg.command.wgpgsubcommands.WGPGSubCommandHelp;
+import net.goodnightkimba.wgpg.command.wgpgsubcommands.HelpSubCommand;
 import net.goodnightkimba.wgpg.region.Polygon;
 import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 
@@ -40,7 +40,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                 }
                 if (standardCommand == null) {
                     //Return help menu if no args or sub command
-                    standardCommand = new WGPGSubCommandHelp();
+                    standardCommand = new HelpSubCommand();
                 }
                 if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
                     throw new UserPermissionException();
