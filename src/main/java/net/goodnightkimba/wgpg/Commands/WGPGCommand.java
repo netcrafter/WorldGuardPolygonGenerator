@@ -10,6 +10,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -42,6 +43,11 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                 }
                 if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
                     throw new UserPermissionException();
+                }
+                if ((sender instanceof ConsoleCommandSender) && (standardCommand.getMaxArgs() != args.length)) {
+                    sender.sendMessage(standardCommand.getSyntax());
+                    sender.sendMessage(Config.getString("console-all-args"));
+                    return true;
                 }
                 if (!(standardCommand.getMinArgs() <= args.length) || !(standardCommand.getMaxArgs() >= args.length)) {
                     sender.sendMessage(standardCommand.getSyntax());

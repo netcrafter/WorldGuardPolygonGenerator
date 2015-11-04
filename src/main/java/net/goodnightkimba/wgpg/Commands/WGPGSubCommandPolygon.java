@@ -32,7 +32,6 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
             inputZ = (args.length >= 10) ? args[9] : String.valueOf(player.getLocation().getZ());
             world = (args.length >= 11) ? args[10] : player.getWorld().getName();
 		} else {
-            if (args.length != 11) throw new UserInputException(getSyntax());
             offset = args[7];
             inputX = args[8];
             inputZ = args[9];
