@@ -1,4 +1,4 @@
-package net.goodnightkimba.wgpg.commands;
+package net.goodnightkimba.wgpg.command;
 
 public class StringProcessor {
 	

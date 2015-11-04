@@ -1,8 +1,8 @@
-package net.goodnightkimba.wgpg.commands.wgpgsubcommands;
+package net.goodnightkimba.wgpg.command.wgpgsubcommands;
 
-import net.goodnightkimba.wgpg.commands.CommandInputException;
-import net.goodnightkimba.wgpg.commands.UserPermissionException;
-import net.goodnightkimba.wgpg.commands.WGPGCommand;
+import net.goodnightkimba.wgpg.command.CommandInputException;
+import net.goodnightkimba.wgpg.command.UserPermissionException;
+import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

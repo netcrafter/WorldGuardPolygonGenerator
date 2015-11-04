@@ -1,4 +1,4 @@
-package net.goodnightkimba.wgpg.regions;
+package net.goodnightkimba.wgpg.region;
 
 import java.util.ArrayList;
 import java.util.List;

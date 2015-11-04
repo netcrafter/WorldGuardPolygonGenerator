@@ -1,10 +1,10 @@
-package net.goodnightkimba.wgpg.commands;
+package net.goodnightkimba.wgpg.command;
 
 import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.wgpg.Config;
-import net.goodnightkimba.wgpg.commands.wgpgsubcommands.WGPGSubCommandHelp;
-import net.goodnightkimba.wgpg.regions.Polygon;
-import net.goodnightkimba.wgpg.regions.PolygonRegionCreator;
+import net.goodnightkimba.wgpg.command.wgpgsubcommands.WGPGSubCommandHelp;
+import net.goodnightkimba.wgpg.region.Polygon;
+import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -39,7 +39,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                     }
                 }
                 if (standardCommand == null) {
-                    //Return help menu if no args or sub commands
+                    //Return help menu if no args or sub command
                     standardCommand = new WGPGSubCommandHelp();
                 }
                 if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {

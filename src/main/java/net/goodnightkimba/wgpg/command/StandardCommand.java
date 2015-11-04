@@ -1,4 +1,4 @@
-package net.goodnightkimba.wgpg.commands;
+package net.goodnightkimba.wgpg.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
