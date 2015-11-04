@@ -14,7 +14,7 @@ public class WGPGSubCommandPolygon extends WGPGCommand {
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException {
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, CommandInputException {
 
 		String regionName, radiusX, radiusZ, points, minY, maxY, offset, inputX, inputZ, world;
 

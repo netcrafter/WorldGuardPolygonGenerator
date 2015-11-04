@@ -54,8 +54,8 @@ public class InputValidator {
 		return idPattern.matcher(regionName).matches();
 	}
 	
-	public boolean regionExists(String regionName, String world) throws UserInputException {
-		if (!(worldName(world))) throw new UserInputException("invalid-world", world, "World Name", "world");
+	public boolean regionExists(String regionName, String world) throws CommandInputException {
+		if (!(worldName(world))) throw new CommandInputException("invalid-world", world, "World Name", "world");
 		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
 		return (rm.getRegion(regionName) == null);
 	}	

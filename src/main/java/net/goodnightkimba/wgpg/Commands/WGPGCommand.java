@@ -54,7 +54,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                     return true;
                 }
                 standardCommand.execute(sender, cmd, label, args);
-            } catch (UserInputException e) {
+            } catch (CommandInputException e) {
                 sender.sendMessage(e.getMessage());
                 return true;
             } catch (UserPermissionException e) {
@@ -75,7 +75,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
 
     protected void validatePolyArgs(String regionName, String radiusX, String radiusZ,
                                     String points, String offset, String minY, String maxY, String inputX,
-                                    String inputZ, String world, CommandSender sender) throws UserInputException {
+                                    String inputZ, String world, CommandSender sender) throws CommandInputException {
         WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
         iv.validRegionName(regionName);
         iv.validRadiusX(radiusX);
@@ -193,7 +193,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, UserInputException {
+    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, CommandInputException {
         onCommand(sender, cmd, label, args);
         return true;
     }
