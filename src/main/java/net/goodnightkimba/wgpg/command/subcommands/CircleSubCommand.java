@@ -35,8 +35,8 @@ public class CircleSubCommand extends WGPGCommand {
             inputZ = args[6];
             world = args[7];
         }
-        validatePolyArgs(regionName, radius, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
-        processPolygonArgs(regionName, radius, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
+        validatePolyArgs(regionName, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
+        processPolygonArgs(regionName, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
         return true;
 	}
 }

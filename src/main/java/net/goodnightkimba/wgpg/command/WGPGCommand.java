@@ -24,7 +24,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     private String syntax = "/wgpg";
     private int minArgs = 0;
     private int maxArgs = 0;
-    private String permission = "wgpg.generate.polygon";
+    private String permission = "";
     private ArrayList<StandardCommand> subCommands = new ArrayList<>();
 
     @Override
@@ -75,13 +75,12 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
         return this.subCommands;
     }
 
-    protected void validatePolyArgs(String regionName, String radiusX, String radiusZ,
+    protected void validatePolyArgs(String regionName, String radius,
                                     String points, String offset, String minY, String maxY, String inputX,
                                     String inputZ, String world, CommandSender sender) throws CommandInputException {
         WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
         iv.validRegionName(regionName);
-        iv.validRadiusX(radiusX);
-        iv.validRadiusZ(radiusZ);
+        iv.validRadiusX(radius);
         iv.validNumberOfPoints(points);
         iv.validOffSet(offset);
         iv.validMinY(minY);
@@ -93,18 +92,18 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
         iv.allowOverrideRegion(regionName, world, sender);
     }
 
-	protected void processPolygonArgs(String regionName, String radiusX, String radiusZ,
+	protected void processPolygonArgs(String regionName, String radius,
                                       String points, String offset, String minY, String maxY, String inputX,
                                       String inputZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radiusX), Integer.parseInt(radiusZ), Integer.parseInt(points),
+        processPolygon(regionName, Integer.parseInt(radius), Integer.parseInt(points),
                 Integer.parseInt(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
                 Double.parseDouble(inputZ), Bukkit.getWorld(world), sender);
 	}
 
-    protected void processPolygon(String regionName, int radiusX, int radiusZ,
+    protected void processPolygon(String regionName, int radius,
                                   int points, int offset, int minY, int maxY, double inputX,
                                   double inputZ, World world, CommandSender sender) {
-        Polygon2D poly = new Polygon2D(radiusX, radiusZ, points, offset,inputX, inputZ);
+        Polygon2D poly = new Polygon2D(radius, points, offset,inputX, inputZ);
         PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getPoints(), minY, maxY);
 
         if (sender instanceof Player) {
