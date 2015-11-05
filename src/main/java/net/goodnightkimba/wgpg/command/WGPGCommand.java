@@ -4,7 +4,7 @@ import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.wgpg.Config;
 import net.goodnightkimba.wgpg.command.validators.WGPGCommandInputValidator;
 import net.goodnightkimba.wgpg.command.subcommands.HelpSubCommand;
-import net.goodnightkimba.wgpg.region.Polygon;
+import net.goodnightkimba.wgpg.region.Polygon2D;
 import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 
 import org.bukkit.Bukkit;
@@ -104,7 +104,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     protected void processPolygon(String regionName, int radiusX, int radiusZ,
                                   int points, int offset, int minY, int maxY, double inputX,
                                   double inputZ, World world, CommandSender sender) {
-        Polygon poly = new Polygon(radiusX, radiusZ, points, offset,inputX, inputZ);
+        Polygon2D poly = new Polygon2D(radiusX, radiusZ, points, offset,inputX, inputZ);
         PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getPoints(), minY, maxY);
 
         if (sender instanceof Player) {
