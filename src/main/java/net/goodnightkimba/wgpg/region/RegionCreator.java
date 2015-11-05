@@ -12,11 +12,11 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class RegionCreator {
-	
-	protected RegionManager rm;
-	protected World world;
-	protected String regionName;
-	protected ProtectedRegion pr;
+
+	private RegionManager rm;
+	private World world;
+	private String regionName;
+	private ProtectedRegion pr;
 	
 	protected RegionCreator(String regionName, World world, ProtectedRegion pr) {
 		this.world = world;
@@ -24,7 +24,6 @@ public class RegionCreator {
 		this.pr = pr;
 		this.rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(world);
 	}
-	
 	
 	public void setOwner(Player player) {
 		LocalPlayer lplayer = WorldGuardPolygonGenerator.WGBukkit.wrapPlayer(player);
@@ -41,22 +40,35 @@ public class RegionCreator {
 	}
 	
 	public void save() throws StorageException {
-		
 		this.rm.addRegion(pr);
-		
 		this.rm.save();
-		
 	}
+
+    public RegionManager getRegionManager() {
+        return this.rm;
+    }
 	
 	public ProtectedRegion getRegion() {
 		return this.pr;
 	}
+
+    public void SetRegion(ProtectedRegion region) {
+        this.pr = region;
+    }
 	
 	public String getRegionName() {
 		return this.regionName;
 	}
+
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
+    }
 	
 	public World getWorld() {
 		return this.world;
 	}
+
+    public void setWorld(World world) {
+        this.world = world;
+    }
 }
