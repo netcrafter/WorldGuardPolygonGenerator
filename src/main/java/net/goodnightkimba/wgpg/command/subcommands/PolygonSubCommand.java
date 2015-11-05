@@ -2,12 +2,11 @@ package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.CommandInputException;
 import net.goodnightkimba.wgpg.command.UserPermissionException;
-import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class PolygonSubCommand extends WGPGCommand {
+public class PolygonSubCommand extends PolygonalCommand {
     public PolygonSubCommand() {
         setName("polygon");
         addAlias("p");

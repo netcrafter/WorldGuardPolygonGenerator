@@ -1,10 +1,9 @@
 package net.goodnightkimba.wgpg.command.subcommands;
 
-import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class EllipseSubCommand extends WGPGCommand {
+public class EllipseSubCommand extends EllipticCommand {
     public EllipseSubCommand() {
         setName("ellipse");
         addAlias("e");

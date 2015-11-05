@@ -1,10 +1,9 @@
 package net.goodnightkimba.wgpg.command.subcommands;
 
-import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class SquareSubCommand extends WGPGCommand {
+public class SquareSubCommand extends PolygonalCommand {
     public SquareSubCommand() {
         setName("square");
         addAlias("s");

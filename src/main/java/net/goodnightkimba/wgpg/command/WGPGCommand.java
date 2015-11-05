@@ -2,13 +2,9 @@ package net.goodnightkimba.wgpg.command;
 
 import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import net.goodnightkimba.wgpg.Config;
-import net.goodnightkimba.wgpg.command.validators.WGPGCommandInputValidator;
 import net.goodnightkimba.wgpg.command.subcommands.HelpSubCommand;
-import net.goodnightkimba.wgpg.region.Polygon2D;
-import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
+import net.goodnightkimba.wgpg.region.RegionCreator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -75,58 +71,24 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
         return this.subCommands;
     }
 
-    protected void validatePolyArgs(String regionName, String radius,
-                                    String points, String offset, String minY, String maxY, String inputX,
-                                    String inputZ, String world, CommandSender sender) throws CommandInputException {
-        WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
-        iv.validRegionName(regionName);
-        iv.validRadiusX(radius);
-        iv.validNumberOfPoints(points);
-        iv.validOffSet(offset);
-        iv.validMinY(minY);
-        iv.validMaxY(maxY);
-        iv.validRangeY(minY, maxY);
-        iv.validCentreX(inputX);
-        iv.validCentreZ(inputZ);
-        iv.validWorld(world);
-        iv.allowOverrideRegion(regionName, world, sender);
-    }
-
-	protected void processPolygonArgs(String regionName, String radius,
-                                      String points, String offset, String minY, String maxY, String inputX,
-                                      String inputZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radius), Integer.parseInt(points),
-                Integer.parseInt(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
-                Double.parseDouble(inputZ), Bukkit.getWorld(world), sender);
-	}
-
-    protected void processPolygon(String regionName, int radius,
-                                  int points, int offset, int minY, int maxY, double inputX,
-                                  double inputZ, World world, CommandSender sender) {
-        Polygon2D poly = new Polygon2D(radius, points, offset,inputX, inputZ);
-        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getPoints(), minY, maxY);
-
+    protected void processRegionCreation(RegionCreator rc, CommandSender sender) {
         if (sender instanceof Player) {
             if (Config.addAsMember) {
-                prc.setMember((Player) sender);
+                rc.setMember((Player) sender);
             }
-
             if (Config.addAsOwner) {
-                prc.setOwner((Player) sender);
+                rc.setOwner((Player) sender);
             }
         }
-
         try {
-            prc.save();
+            rc.save();
         } catch (StorageException e) {
             e.printStackTrace();
             StringProcessor sp = new StringProcessor(Config.getString("region-save-error"));
             sp.processColor();
-
             sender.sendMessage(sp.getString());
             return;
         }
-
         StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
         sp.processColor();
         sender.sendMessage(sp.getString());

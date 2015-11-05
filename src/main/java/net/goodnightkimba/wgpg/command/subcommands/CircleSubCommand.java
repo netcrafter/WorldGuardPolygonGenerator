@@ -2,12 +2,11 @@ package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.CommandInputException;
 import net.goodnightkimba.wgpg.command.UserPermissionException;
-import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CircleSubCommand extends WGPGCommand {
+public class CircleSubCommand extends PolygonalCommand {
     public CircleSubCommand() {
         setName("circle");
         addAlias("c");
