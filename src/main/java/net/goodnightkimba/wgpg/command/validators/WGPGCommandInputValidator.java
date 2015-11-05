@@ -90,4 +90,12 @@ public class WGPGCommandInputValidator extends InputValidator {
 		if (!max(offset, 720)) throw new CommandInputException("too-large", input, "720", "offset");
 		return true;
 	}
+
+	public boolean validRotation(String input) throws CommandInputException {
+		if (!integer(input)) throw new CommandInputException("must-be-int", input, "integer", "rotation");
+		int rotation = Integer.parseInt(input);
+		if (!min(rotation, 0)) throw new CommandInputException("too-small", input, "0", "rotation");
+		if (!max(rotation, 360)) throw new CommandInputException("too-large", input, "360", "rotation");
+		return true;
+	}
 }
