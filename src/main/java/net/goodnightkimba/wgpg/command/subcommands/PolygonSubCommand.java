@@ -9,19 +9,19 @@ public class PolygonSubCommand extends PolygonalCommand {
     public PolygonSubCommand() {
         setName("polygon");
         addAlias("p");
-        setSyntax("/wgpg polygon <regionName> <radius> <points> <offset> <minY> <maxY> [X] [Z] [world]");
+        setSyntax("/wgpg polygon <regionName> <radius> <vertices> <offset> <minY> <maxY> [X] [Z] [world]");
         setArgRange(7, 10);
         setPermission("wgpg.generate.polygon");
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
 
-		String regionName, radius, points, minY, maxY, offset, centerX, centerZ, world;
+		String regionName, radius, vertices, minY, maxY, offset, centerX, centerZ, world;
 
 		regionName = args[1];
 		radius = args[2];
-		points = args[3];
+		vertices = args[3];
         offset = args[4];
         minY = args[5];
 		maxY = args[6];
@@ -36,8 +36,7 @@ public class PolygonSubCommand extends PolygonalCommand {
             centerZ = args[8];
             world = args[9];
 		}
-        validatePolyArgs(regionName, radius, points, offset, minY, maxY, centerX, centerZ, world, sender);
-		processPolygonArgs(regionName, radius, points, offset, minY, maxY, centerX, centerZ, world, sender);
-		return true;
+        validatePolyArgs(regionName, radius, vertices, offset, minY, maxY, centerX, centerZ, world, sender);
+		processPolygonArgs(regionName, radius, vertices, offset, minY, maxY, centerX, centerZ, world, sender);
 	}
 }

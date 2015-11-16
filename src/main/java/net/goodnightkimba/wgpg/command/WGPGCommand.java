@@ -150,8 +150,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
         onCommand(sender, cmd, label, args);
-        return true;
     }
 }

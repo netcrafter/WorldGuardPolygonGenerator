@@ -8,7 +8,7 @@ import java.util.List;
 public class Ellipse2D {
     private int radiusX;
     private int radiusY;
-    private int numPoints = 360;
+    private int vertices = 360;
     private int offSet = 0;
     private int rotation = 0;
     private double centerX = 0;
@@ -19,48 +19,48 @@ public class Ellipse2D {
      *
      * @param radiusX X radius
      * @param radiusY Y radius
-     * @param numPoints Number of points in the ellipse
-     * @param offset Offset in degrees.
+     * @param vertices Total number of vertices in the ellipse.
+     * @param offset The offset in degrees of the first vertex.
      * @param rotation Number of degrees to rotate axis
-     * @param centerX Centre X coord
-     * @param centerY Centre Y coord
+     * @param centerX Center X coordinate
+     * @param centerY Center Y coordinate
      */
-    public Ellipse2D(int radiusX, int radiusY, int numPoints, int offset, int rotation, double centerX, double centerY) {
+    public Ellipse2D(int radiusX, int radiusY, int vertices, int offset, int rotation, double centerX, double centerY) {
         this.radiusX = radiusX;
         this.radiusY = radiusY;
-        this.numPoints = numPoints;
+        this.vertices = vertices;
         this.offSet = offset;
         this.rotation = rotation;
         this.centerX = centerX;
         this.centerY = centerY;
     }
 
-    /** Get the coordinates of the points of the polygon.
+    /** Get the coordinates of the vertices of the polygon.
      *
-     * @return List containing coordinates of points as BlockVector2D.
+     * @return List containing coordinates of vertices as BlockVector2D.
      */
-    public List<BlockVector2D> getPoints() {
-        List<BlockVector2D> polygonPoints = new ArrayList<>();
+    public List<BlockVector2D> getVertices() {
+        List<BlockVector2D> polygonVertices = new ArrayList<>();
         double deg = this.offSet;
-        double angle = 360 / this.numPoints; //in degrees
+        double angle = 360 / this.vertices; //in degrees
         double rotation = Math.toRadians(this.rotation);
         double xCoord;
         double zCoord;
-        for (int i = 0; i < this.numPoints; i++) {
+        for (int i = 0; i < this.vertices; i++) {
             double radDeg = Math.toRadians(deg);
             xCoord = this.centerX + this.radiusX * Math.cos(radDeg) * Math.cos(rotation) - this.radiusY * Math.sin(radDeg) * Math.sin(rotation);
             zCoord = this.centerY + this.radiusX * Math.cos(radDeg) * Math.sin(rotation) + this.radiusY * Math.sin(radDeg) * Math.cos(rotation);
             deg = deg + angle;
-            polygonPoints.add(new BlockVector2D(xCoord, zCoord));
+            polygonVertices.add(new BlockVector2D(xCoord, zCoord));
         }
-        return polygonPoints;
+        return polygonVertices;
     }
 
     public double getCenterY() {
         return this.centerY;
     }
 
-    public void setCenterY(double inputZ) {
+    public void setCenterY(double centerY) {
         this.centerY = centerY;
     }
 
@@ -88,12 +88,12 @@ public class Ellipse2D {
         this.rotation = rotation;
     }
 
-    public int getNumPoints() {
-        return numPoints;
+    public int getVerticesCount() {
+        return vertices;
     }
 
-    public void setNumPoints(int numPoints) {
-        this.numPoints = numPoints;
+    public void setVerticesCount(int vertices) {
+        this.vertices = vertices;
     }
 
     public int getRadiusY() {

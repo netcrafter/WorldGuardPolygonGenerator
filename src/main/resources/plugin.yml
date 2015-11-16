@@ -7,19 +7,19 @@ prefix: WGPG
 commands:
    wgpg:
      description: Generates a WorldGuard polygon region based upon the players input.
-     usage: /wgpg <regionName> <radius> <points> <offset> <minY> <maxY> [X] [Z] [world]
+     usage: /wgpg help
 permissions:
    wgpg.generate.polygon:
-     description: Permission to use /wgpg polygon <regionName> <radius> <points> <offset> <minY> <maxY> [X] [Z] [world]
+     description: Permission to use /wgpg polygon <regionName> <radius> <vertices> <offset> <minY> <maxY> [X] [Z] [world]
      default: op
    wgpg.generate.ellipse:
-     decription: Permission to use /wgpg ellipse <radiusX> <radiusZ> <minY> <maxY> [X] [Z] [world]
+     decription: Permission to use /wgpg ellipse <regionName> <radiusX> <radiusZ> <vertices> <offset> <rotation> <minY> <maxY> [X] [Z] [world]
      default: op
    wgpg.generate.circle:
      decription: Permission to use /wgpg circle <regionName> <radius> <minY> <maxY> [X] [Z] [world]
      default: op
    wgpg.generate.rectangle:
-     decription: Permission to use /wgpg rectangle <sizeX> <sizeZ> <minY> <maxY> [offset] [X] [Z] [world]
+     decription: Permission to use /wgpg rectangle <regionName> <sizeX> <sizeZ> <minY> <maxY> [rotation] [X] [Z] [world]
      default: op
    wgpg.generate.square:
      decription: Permission to use /wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]

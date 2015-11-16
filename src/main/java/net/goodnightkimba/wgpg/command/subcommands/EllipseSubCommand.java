@@ -9,18 +9,18 @@ public class EllipseSubCommand extends EllipticCommand {
     public EllipseSubCommand() {
         setName("ellipse");
         addAlias("e");
-        setSyntax("/wgpg ellipse <regionName> <radiusX> <radiusZ> <points> <offset> <rotation> <minY> <maxY> [X] [Z] [world]");
+        setSyntax("/wgpg ellipse <regionName> <radiusX> <radiusZ> <vertices> <offset> <rotation> <minY> <maxY> [X] [Z] [world]");
         setArgRange(9, 12);
         setPermission("wgpg.generate.ellipse");
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
-		String regionName, radiusX, radiusZ, points, offset, rotation, minY, maxY, centerX, centerZ, world;
+	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+		String regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world;
         regionName = args[1];
         radiusX = args[2];
         radiusZ = args[3];
-        points = args[4];
+        vertices = args[4];
         offset = args[5];
         rotation = args[6];
         minY = args[7];
@@ -35,8 +35,7 @@ public class EllipseSubCommand extends EllipticCommand {
             centerZ = args[10];
             world = args[11];
         }
-        validateEllipseArgs(regionName, radiusX, radiusZ, points, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
-        processEllipseArgs(regionName, radiusX, radiusZ, points, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
-        return true;
+        validateEllipseArgs(regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
+        processEllipseArgs(regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
 	}
 }

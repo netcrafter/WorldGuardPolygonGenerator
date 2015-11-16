@@ -19,7 +19,7 @@ public class SquareSubCommand extends PolygonalCommand {
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
 		String regionName, size, minY, maxY, rotation, centerX, centerZ, world;
         regionName = args[1];
         size = args[2];
@@ -54,6 +54,5 @@ public class SquareSubCommand extends PolygonalCommand {
             processPolygonArgs(regionName, String.valueOf(radius.intValue()), "4",
                 String.valueOf(Integer.parseInt(rotation) + 45), minY, maxY, centerX, centerZ, world, sender);
         }
-        return true;
 	}
 }

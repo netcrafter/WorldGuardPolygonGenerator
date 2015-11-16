@@ -28,18 +28,18 @@ class EllipticCommand extends WGPGCommand {
     }
 
     protected void processEllipseArgs(String regionName, String radiusX, String radiusZ,
-                                      String points, String offset, String rotation, String minY, String maxY, String centerX,
+                                      String vertices, String offset, String rotation, String minY, String maxY, String centerX,
                                       String centerZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radiusX), Integer.parseInt(radiusZ), Integer.parseInt(points),
+        processPolygon(regionName, Integer.parseInt(radiusX), Integer.parseInt(radiusZ), Integer.parseInt(vertices),
                 Integer.parseInt(offset), Integer.parseInt(rotation), Integer.parseInt(minY), Integer.parseInt(maxY),
                 Double.parseDouble(centerX), Double.parseDouble(centerZ), Bukkit.getWorld(world), sender);
     }
 
     protected void processPolygon(String regionName, int radiusX, int radiusZ,
-                                  int points, int offset, int rotation, int minY, int maxY, double centerX,
+                                  int vertices, int offset, int rotation, int minY, int maxY, double centerX,
                                   double centerZ, World world, CommandSender sender) {
-        Ellipse2D ellipse = new Ellipse2D(radiusX, radiusZ, points, offset, rotation, centerX, centerZ);
-        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, ellipse.getPoints(), minY, maxY);
+        Ellipse2D ellipse = new Ellipse2D(radiusX, radiusZ, vertices, offset, rotation, centerX, centerZ);
+        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, ellipse.getVertices(), minY, maxY);
         processRegionCreation(prc, sender);
     }
 }

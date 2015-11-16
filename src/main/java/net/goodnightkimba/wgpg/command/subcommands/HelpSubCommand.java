@@ -17,11 +17,10 @@ public class HelpSubCommand extends WGPGCommand {
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {
+	public void execute(CommandSender sender, Command cmd, String label, String[] args) {
         sender.sendMessage(Config.getColorString("wgpg-help-menu"));
         for (StandardCommand command : WorldGuardPolygonGenerator.commandList) {
             sender.sendMessage(ChatColor.GREEN + command.getSyntax());
         }
-		return true;
 	}
 }

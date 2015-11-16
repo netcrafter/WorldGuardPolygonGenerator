@@ -11,12 +11,12 @@ import org.bukkit.command.CommandSender;
 
 class PolygonalCommand extends WGPGCommand {
     protected void validatePolyArgs(String regionName, String radius,
-                                    String points, String offset, String minY, String maxY, String inputX,
+                                    String vertices, String offset, String minY, String maxY, String inputX,
                                     String inputZ, String world, CommandSender sender) throws CommandInputException {
         InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
         iv.validIntBetween(radius, "radius", 0, Integer.MAX_VALUE);
-        iv.validIntBetween(points, "vertices", 0, 360);
+        iv.validIntBetween(vertices, "vertices", 0, 360);
         iv.validIntBetween(offset, "offset", 0, 360);
         iv.validRangeY(minY, maxY);
         iv.validCenter(inputX, "centerX");
@@ -26,18 +26,18 @@ class PolygonalCommand extends WGPGCommand {
     }
 
     protected void processPolygonArgs(String regionName, String radius,
-                                      String points, String offset, String minY, String maxY, String inputX,
+                                      String vertices, String offset, String minY, String maxY, String inputX,
                                       String inputZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radius), Integer.parseInt(points),
+        processPolygon(regionName, Integer.parseInt(radius), Integer.parseInt(vertices),
                 Integer.parseInt(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
                 Double.parseDouble(inputZ), Bukkit.getWorld(world), sender);
     }
 
     protected void processPolygon(String regionName, int radius,
-                                  int points, int offset, int minY, int maxY, double inputX,
+                                  int vertices, int offset, int minY, int maxY, double inputX,
                                   double inputZ, World world, CommandSender sender) {
-        Polygon2D poly = new Polygon2D(radius, points, offset, inputX, inputZ);
-        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getPoints(), minY, maxY);
+        Polygon2D poly = new Polygon2D(radius, vertices, offset, inputX, inputZ);
+        PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getVertices(), minY, maxY);
         processRegionCreation(prc, sender);
     }
 }

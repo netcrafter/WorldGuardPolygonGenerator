@@ -24,7 +24,7 @@ public class RectangleSubCommand extends EllipticCommand {
     }
 
 	@Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
 		String regionName, sizeX, sizeZ, minY, maxY, rotation, centerX, centerZ, world;
         regionName = args[1];
         sizeX = args[2];
@@ -57,7 +57,7 @@ public class RectangleSubCommand extends EllipticCommand {
             BlockVector p2 = new BlockVector(x - lengthX, Integer.parseInt(minY), z - lengthZ);
             RegionCreator crc = new CuboidRegionCreator(regionName, Bukkit.getWorld(world), p1, p2);
             processRegionCreation(crc, sender);
-            return true;
+            return;
         }
 
         double rotAng = Math.toRadians(Integer.parseInt(rotation));
@@ -74,6 +74,5 @@ public class RectangleSubCommand extends EllipticCommand {
         }
         RegionCreator prc = new PolygonRegionCreator(regionName, Bukkit.getWorld(world), rotatedVertices, Integer.parseInt(minY), Integer.parseInt(maxY));
         processRegionCreation(prc, sender);
-        return true;
 	}
 }
