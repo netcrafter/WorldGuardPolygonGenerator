@@ -21,6 +21,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     private int minArgs = 0;
     private int maxArgs = 0;
     private String permission = "";
+    private boolean hidden = false;
     private ArrayList<StandardCommand> subCommands = new ArrayList<>();
 
     @Override
@@ -147,6 +148,16 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     @Override
     public void setPermission(String permission) {
         this.permission = permission;
+    }
+
+    @Override
+    public void setHidden() {
+        this.hidden = true;
+    }
+
+    @Override
+    public boolean isHidden() {
+        return this.hidden;
     }
 
     @Override

@@ -30,5 +30,9 @@ public interface StandardCommand {
 
     void setPermission(String permission);
 
+    void setHidden();
+
+    boolean isHidden();
+
     void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException;
 }

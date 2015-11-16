@@ -43,12 +43,12 @@ public final class WorldGuardPolygonGenerator extends JavaPlugin {
 
         WGPGCommand wgpg = new WGPGCommand();
         wgpg.registerSubCommand(new HelpSubCommand());
-        wgpg.registerSubCommand(new ReloadSubCommand());
-        wgpg.registerSubCommand(new CircleSubCommand());
+		wgpg.registerSubCommand(new PolygonSubCommand());
         wgpg.registerSubCommand(new EllipseSubCommand());
+        wgpg.registerSubCommand(new CircleSubCommand());
         wgpg.registerSubCommand(new SquareSubCommand());
         wgpg.registerSubCommand(new RectangleSubCommand());
-        wgpg.registerSubCommand(new PolygonSubCommand());
+        wgpg.registerSubCommand(new ReloadSubCommand());
 		getCommand("wgpg").setExecutor(wgpg);
         commandList.addAll(wgpg.getSubCommands());
 	}
