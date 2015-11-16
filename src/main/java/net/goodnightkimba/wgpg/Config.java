@@ -18,7 +18,6 @@ public class Config {
 	
 	public Config(Plugin plugin){
 		Config.plugin = plugin;
-		
 	}
 	
 	public void loadConfig() {
@@ -50,7 +49,6 @@ public class Config {
 		} else {
 			Config.lang = plugin.getConfig().getString("lang");
 		}
-		
 		Config.stringsConfig = getStringsConfig(Config.lang);
 	}
 	
@@ -61,10 +59,12 @@ public class Config {
 
 	public static String getString(String id) {
 		String msg = Config.stringsConfig.getString(id);
-		
 		if (msg == null) return "ERROR: String doesn't exist or couldn't be found. (" + id + ") Report this error to an Administrator.";
-		
 		return msg;
+	}
+
+	public static String getColorString(String id) {
+		return getString(id).replaceAll("(?i)&([a-fklmno0-9])", "\u00A7$1");
 	}
 	
 	private YamlConfiguration getStringsConfig(String language) {

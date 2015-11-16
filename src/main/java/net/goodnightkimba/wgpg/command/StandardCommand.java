@@ -30,5 +30,5 @@ public interface StandardCommand {
 
     void setPermission(String permission);
 
-    boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, CommandInputException;
+    boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException;
 }

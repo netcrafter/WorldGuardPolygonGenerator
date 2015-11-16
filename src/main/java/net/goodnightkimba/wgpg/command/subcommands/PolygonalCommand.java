@@ -2,7 +2,7 @@ package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.CommandInputException;
 import net.goodnightkimba.wgpg.command.WGPGCommand;
-import net.goodnightkimba.wgpg.command.validators.WGPGCommandInputValidator;
+import net.goodnightkimba.wgpg.command.InputValidator;
 import net.goodnightkimba.wgpg.region.Polygon2D;
 import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 import org.bukkit.Bukkit;
@@ -13,16 +13,14 @@ class PolygonalCommand extends WGPGCommand {
     protected void validatePolyArgs(String regionName, String radius,
                                     String points, String offset, String minY, String maxY, String inputX,
                                     String inputZ, String world, CommandSender sender) throws CommandInputException {
-        WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
+        InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validRadiusX(radius);
-        iv.validNumberOfPoints(points);
-        iv.validOffSet(offset);
-        iv.validMinY(minY);
-        iv.validMaxY(maxY);
+        iv.validIntBetween(radius, "radius", 0, Integer.MAX_VALUE);
+        iv.validIntBetween(points, "vertices", 0, 360);
+        iv.validIntBetween(offset, "offset", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validCentreX(inputX);
-        iv.validCentreZ(inputZ);
+        iv.validCenter(inputX, "centerX");
+        iv.validCenter(inputZ, "centerZ");
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }

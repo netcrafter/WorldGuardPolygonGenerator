@@ -3,8 +3,6 @@ package net.goodnightkimba.wgpg.command.subcommands;
 import net.goodnightkimba.wgpg.Config;
 import net.goodnightkimba.wgpg.WorldGuardPolygonGenerator;
 import net.goodnightkimba.wgpg.command.StandardCommand;
-import net.goodnightkimba.wgpg.command.StringProcessor;
-import net.goodnightkimba.wgpg.command.UserPermissionException;
 import net.goodnightkimba.wgpg.command.WGPGCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,11 +17,8 @@ public class HelpSubCommand extends WGPGCommand {
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException {
-        String menu = Config.getString("wgpg-help-menu");
-        StringProcessor sp = new StringProcessor(menu);
-        sp.processColor();
-        sender.sendMessage(sp.getString());
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) {
+        sender.sendMessage(Config.getColorString("wgpg-help-menu"));
         for (StandardCommand command : WorldGuardPolygonGenerator.commandList) {
             sender.sendMessage(ChatColor.GREEN + command.getSyntax());
         }

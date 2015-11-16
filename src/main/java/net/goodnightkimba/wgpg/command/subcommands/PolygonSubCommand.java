@@ -1,7 +1,6 @@
 package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.CommandInputException;
-import net.goodnightkimba.wgpg.command.UserPermissionException;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,7 +15,7 @@ public class PolygonSubCommand extends PolygonalCommand {
     }
 
     @Override
-	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, CommandInputException {
+	public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
 
 		String regionName, radius, points, minY, maxY, offset, centerX, centerZ, world;
 

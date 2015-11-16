@@ -2,7 +2,7 @@ package net.goodnightkimba.wgpg.command.subcommands;
 
 import net.goodnightkimba.wgpg.command.CommandInputException;
 import net.goodnightkimba.wgpg.command.WGPGCommand;
-import net.goodnightkimba.wgpg.command.validators.WGPGCommandInputValidator;
+import net.goodnightkimba.wgpg.command.InputValidator;
 import net.goodnightkimba.wgpg.region.Ellipse2D;
 import net.goodnightkimba.wgpg.region.PolygonRegionCreator;
 import org.bukkit.Bukkit;
@@ -11,20 +11,18 @@ import org.bukkit.command.CommandSender;
 
 class EllipticCommand extends WGPGCommand {
     protected void validateEllipseArgs(String regionName, String radiusX, String radiusZ,
-                                    String points, String offset, String rotation, String minY, String maxY, String centerX,
+                                    String vertices, String offset, String rotation, String minY, String maxY, String centerX,
                                     String centerZ, String world, CommandSender sender) throws CommandInputException {
-        WGPGCommandInputValidator iv = new WGPGCommandInputValidator();
+        InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validRadiusX(radiusX);
-        iv.validRadiusZ(radiusZ);
-        iv.validNumberOfPoints(points);
-        iv.validOffSet(offset);
-        iv.validRotation(rotation);
-        iv.validMinY(minY);
-        iv.validMaxY(maxY);
+        iv.validIntBetween(radiusX, "radiusX", 0, Integer.MAX_VALUE);
+        iv.validIntBetween(radiusZ, "radiusZ", 0, Integer.MAX_VALUE);
+        iv.validIntBetween(vertices, "vertices", 2, 360);
+        iv.validIntBetween(offset, "offset", 0, 360);
+        iv.validIntBetween(rotation, "rotation", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validCentreX(centerX);
-        iv.validCentreZ(centerZ);
+        iv.validCenter(centerX, "centerX");
+        iv.validCenter(centerZ, "centerZ");
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }

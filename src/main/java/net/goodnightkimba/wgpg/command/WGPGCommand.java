@@ -40,7 +40,8 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                     standardCommand = new HelpSubCommand();
                 }
                 if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
-                    throw new UserPermissionException();
+                    sender.sendMessage(Config.getString("permission-denided-cmd").replaceAll("(?i)&([a-fklmno0-9])", "\u00A7$1"));
+                    return true;
                 }
                 if ((sender instanceof ConsoleCommandSender) && (standardCommand.getMaxArgs() != args.length)) {
                     sender.sendMessage(standardCommand.getSyntax());
@@ -53,9 +54,6 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                 }
                 standardCommand.execute(sender, cmd, label, args);
             } catch (CommandInputException e) {
-                sender.sendMessage(e.getMessage());
-                return true;
-            } catch (UserPermissionException e) {
                 sender.sendMessage(e.getMessage());
                 return true;
             }
@@ -84,14 +82,10 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
             rc.save();
         } catch (StorageException e) {
             e.printStackTrace();
-            StringProcessor sp = new StringProcessor(Config.getString("region-save-error"));
-            sp.processColor();
-            sender.sendMessage(sp.getString());
+            sender.sendMessage(Config.getColorString("region-save-error"));
             return;
         }
-        StringProcessor sp = new StringProcessor(Config.getString("region-created-successfully"));
-        sp.processColor();
-        sender.sendMessage(sp.getString());
+        sender.sendMessage(Config.getColorString("region-created-successfully"));
     }
 
     @Override
@@ -156,7 +150,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws UserPermissionException, CommandInputException {
+    public boolean execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
         onCommand(sender, cmd, label, args);
         return true;
     }
