@@ -31,26 +31,6 @@ public class InputValidator {
 		}
 	}
 	
-	public boolean maxLength(String input, int length) {
-		return input.length() <= length;
-	}
-	
-	public boolean minLength(String input, int length) {
-		return input.length() >= length;
-	}
-	
-	public boolean max(int input, int max) {
-		return input <= max;
-	}
-	
-	public boolean min(int input, int min) {
-		return input >= min;
-	}
-	
-	public boolean worldName(String world) {
-		return (Bukkit.getWorld(world) != null);
-	}
-	
 	public boolean regionName(String regionName) {
 		if (regionName.equalsIgnoreCase("__global__")) return false;
 		Pattern idPattern = Pattern.compile("^[A-Za-z0-9_,'\\-\\+/]{1,}$");
@@ -58,33 +38,28 @@ public class InputValidator {
 	}
 	
 	public boolean regionExists(String regionName, String world) throws CommandInputException {
-		if (!(worldName(world))) throw new CommandInputException("invalid-world", world, "World Name", "world");
+		if (Bukkit.getWorld(world) == null) throw new CommandInputException("invalid-world", world, "World Name", "world");
 		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
 		return (rm.getRegion(regionName) == null);
 	}
 
     public void validWorld(String input) throws CommandInputException {
-        if (!worldName(input)) throw new CommandInputException("invalid-world", input, "World Name", "world");
-    }
-
-    public void validCenter(String input, String field) throws CommandInputException {
-        if (!decimal(input)) throw new CommandInputException("must-be-double", input, "double", field);
+        if (Bukkit.getWorld(input) == null) throw new CommandInputException("invalid-world", input, "World Name", "world");
     }
 
     public void validRegionName(String input) throws CommandInputException {
-        if (!minLength(input, 1)) throw new CommandInputException("too-short", input, "Region Name", "regionName");
-        if (!maxLength(input, 255)) throw new CommandInputException("too-long", input, "Region Name", "regionName");
+        if (input.length() < 1) throw new CommandInputException("too-short", input, "Region Name", "regionName");
+        if (input.length() > 255) throw new CommandInputException("too-long", input, "Region Name", "regionName");
         if (!regionName(input)) throw new CommandInputException("invalid-region-name", input, "Region Name", "regionName");
     }
 
-    public boolean allowOverrideRegion(String input, String world, CommandSender sender) throws CommandInputException {
+    public void allowOverrideRegion(String input, String world, CommandSender sender) throws CommandInputException {
         if (regionExists(input, world)) {
             if (Config.overrideExistingRegion || sender.hasPermission("wgpg.generate.override") || sender instanceof ConsoleCommandSender) {
-                return true;
+                return;
             }
             throw new CommandInputException("region-exists", input, "Region Name", "regionName");
         }
-        return false;
     }
 
     public void validRangeY(String minY, String maxY) throws CommandInputException {
@@ -96,7 +71,14 @@ public class InputValidator {
     public void validIntBetween(String input, String field, int min, int max) throws CommandInputException {
         if (!integer(input)) throw new CommandInputException("must-be-int", input, "integer", field);
         int inputNum = Integer.parseInt(input);
-        if (!min(inputNum, min)) throw new CommandInputException("too-small", input, String.valueOf(min), field);
-        if (!max(inputNum, max)) throw new CommandInputException("too-large", input, String.valueOf(max), field);
+        if (inputNum < min) throw new CommandInputException("too-small", input, String.valueOf(min), field);
+        if (inputNum > max) throw new CommandInputException("too-large", input, String.valueOf(max), field);
+    }
+
+	public void validDoubleBetween(String input, String field, double min, double max) throws CommandInputException {
+        if (!decimal(input)) throw new CommandInputException("must-be-double", input, "double", field);
+        double inputNum = Double.parseDouble(input);
+        if (inputNum < min) throw new CommandInputException("too-small", input, String.valueOf(min), field);
+        if (inputNum > max) throw new CommandInputException("too-large", input, String.valueOf(max), field);
     }
 }

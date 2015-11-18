@@ -21,8 +21,8 @@ class EllipticCommand extends WGPGCommand {
         iv.validIntBetween(offset, "offset", 0, 360);
         iv.validIntBetween(rotation, "rotation", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validCenter(centerX, "centerX");
-        iv.validCenter(centerZ, "centerZ");
+        iv.validDoubleBetween(centerX, "centerX", Double.MIN_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(centerZ, "centerZ", Double.MIN_VALUE, Double.MAX_VALUE);
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }

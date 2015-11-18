@@ -19,8 +19,8 @@ class PolygonalCommand extends WGPGCommand {
         iv.validIntBetween(vertices, "vertices", 0, 360);
         iv.validIntBetween(offset, "offset", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validCenter(inputX, "centerX");
-        iv.validCenter(inputZ, "centerZ");
+        iv.validDoubleBetween(inputX, "centerX", Double.MIN_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(inputZ, "centerZ", Double.MIN_VALUE, Double.MAX_VALUE);
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }
