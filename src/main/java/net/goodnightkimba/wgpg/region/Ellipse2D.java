@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ellipse2D {
-    private int radiusX;
-    private int radiusY;
+    private double radiusX;
+    private double radiusY;
     private int vertices = 360;
-    private int offSet = 0;
-    private int rotation = 0;
+    private double offSet = 0;
+    private double rotation = 0;
     private double centerX = 0;
     private double centerY = 0;
 
@@ -25,7 +25,7 @@ public class Ellipse2D {
      * @param centerX Center X coordinate
      * @param centerY Center Y coordinate
      */
-    public Ellipse2D(int radiusX, int radiusY, int vertices, int offset, int rotation, double centerX, double centerY) {
+    public Ellipse2D(double radiusX, double radiusY, int vertices, double offset, double rotation, double centerX, double centerY) {
         this.radiusX = radiusX;
         this.radiusY = radiusY;
         this.vertices = vertices;
@@ -35,12 +35,12 @@ public class Ellipse2D {
         this.centerY = centerY;
     }
 
-    /** Get the coordinates of the vertices of the polygon.
+    /** Get the coordinates of the vertices of the ellipse.
      *
      * @return List containing coordinates of vertices as BlockVector2D.
      */
     public List<BlockVector2D> getVertices() {
-        List<BlockVector2D> polygonVertices = new ArrayList<>();
+        List<BlockVector2D> ellipseVertices = new ArrayList<>();
         double deg = this.offSet;
         double angle = 360 / this.vertices; //in degrees
         double rotation = Math.toRadians(this.rotation);
@@ -51,9 +51,9 @@ public class Ellipse2D {
             xCoord = this.centerX + this.radiusX * Math.cos(radDeg) * Math.cos(rotation) - this.radiusY * Math.sin(radDeg) * Math.sin(rotation);
             zCoord = this.centerY + this.radiusX * Math.cos(radDeg) * Math.sin(rotation) + this.radiusY * Math.sin(radDeg) * Math.cos(rotation);
             deg = deg + angle;
-            polygonVertices.add(new BlockVector2D(xCoord, zCoord));
+            ellipseVertices.add(new BlockVector2D(xCoord, zCoord));
         }
-        return polygonVertices;
+        return ellipseVertices;
     }
 
     public double getCenterY() {
@@ -72,19 +72,19 @@ public class Ellipse2D {
         this.centerX = centerX;
     }
 
-    public int getOffset() {
+    public double getOffset() {
         return offSet;
     }
 
-    public void setOffset(int offset) {
+    public void setOffset(double offset) {
         this.offSet = offset;
     }
 
-    public int getRotation() {
+    public double getRotation() {
         return this.rotation;
     }
 
-    public void setRotation(int rotation) {
+    public void setRotation(double rotation) {
         this.rotation = rotation;
     }
 
@@ -96,19 +96,19 @@ public class Ellipse2D {
         this.vertices = vertices;
     }
 
-    public int getRadiusY() {
+    public double getRadiusY() {
         return radiusY;
     }
 
-    public void setRadiusY(int radiusY) {
+    public void setRadiusY(double radiusY) {
         this.radiusY = radiusY;
     }
 
-    public int getRadiusX() {
+    public double getRadiusX() {
         return radiusX;
     }
 
-    public void setRadiusX(int radiusX) {
+    public void setRadiusX(double radiusX) {
         this.radiusX = radiusX;
     }
 }

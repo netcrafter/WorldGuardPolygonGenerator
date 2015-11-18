@@ -40,7 +40,7 @@ public class InputValidator {
 	public boolean regionExists(String regionName, String world) throws CommandInputException {
 		if (Bukkit.getWorld(world) == null) throw new CommandInputException("invalid-world", world, "World Name", "world");
 		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
-		return (rm.getRegion(regionName) == null);
+		return (rm.getRegion(regionName) != null);
 	}
 
     public void validWorld(String input) throws CommandInputException {
@@ -55,7 +55,7 @@ public class InputValidator {
 
     public void allowOverrideRegion(String input, String world, CommandSender sender) throws CommandInputException {
         if (regionExists(input, world)) {
-            if (Config.overrideExistingRegion || sender.hasPermission("wgpg.generate.override") || sender instanceof ConsoleCommandSender) {
+            if (Config.overrideExistingRegion || sender.hasPermission("wgpg.override") || sender instanceof ConsoleCommandSender) {
                 return;
             }
             throw new CommandInputException("region-exists", input, "Region Name", "regionName");

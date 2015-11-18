@@ -47,8 +47,8 @@ public class RectangleSubCommand extends EllipticCommand {
 
         validateEllipseArgs(regionName, sizeX, sizeZ, "4", "45", rotation, minY, maxY, centerX, centerZ, world, sender);
 
-        int lengthX = Integer.parseInt(sizeX);
-        int lengthZ = Integer.parseInt(sizeZ);
+        double lengthX = Double.parseDouble(sizeX);
+        double lengthZ = Double.parseDouble(sizeZ);
         double x = Double.parseDouble(centerX);
         double z = Double.parseDouble(centerZ);
 

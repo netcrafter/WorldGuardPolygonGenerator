@@ -15,14 +15,14 @@ class EllipticCommand extends WGPGCommand {
                                     String centerZ, String world, CommandSender sender) throws CommandInputException {
         InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validIntBetween(radiusX, "radiusX", 0, Integer.MAX_VALUE);
-        iv.validIntBetween(radiusZ, "radiusZ", 0, Integer.MAX_VALUE);
+        iv.validDoubleBetween(radiusX, "radiusX", 0, Double.MAX_VALUE);
+        iv.validDoubleBetween(radiusZ, "radiusZ", 0, Double.MAX_VALUE);
         iv.validIntBetween(vertices, "vertices", 2, 360);
-        iv.validIntBetween(offset, "offset", 0, 360);
-        iv.validIntBetween(rotation, "rotation", 0, 360);
+        iv.validDoubleBetween(offset, "offset", 0, 360);
+        iv.validDoubleBetween(rotation, "rotation", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validDoubleBetween(centerX, "centerX", Double.MIN_VALUE, Double.MAX_VALUE);
-        iv.validDoubleBetween(centerZ, "centerZ", Double.MIN_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(centerX, "centerX", -Double.MAX_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(centerZ, "centerZ", -Double.MAX_VALUE, Double.MAX_VALUE);
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }
@@ -30,13 +30,13 @@ class EllipticCommand extends WGPGCommand {
     protected void processEllipseArgs(String regionName, String radiusX, String radiusZ,
                                       String vertices, String offset, String rotation, String minY, String maxY, String centerX,
                                       String centerZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radiusX), Integer.parseInt(radiusZ), Integer.parseInt(vertices),
-                Integer.parseInt(offset), Integer.parseInt(rotation), Integer.parseInt(minY), Integer.parseInt(maxY),
+        processPolygon(regionName, Double.parseDouble(radiusX), Double.parseDouble(radiusZ), Integer.parseInt(vertices),
+                Double.parseDouble(offset), Double.parseDouble(rotation), Integer.parseInt(minY), Integer.parseInt(maxY),
                 Double.parseDouble(centerX), Double.parseDouble(centerZ), Bukkit.getWorld(world), sender);
     }
 
-    protected void processPolygon(String regionName, int radiusX, int radiusZ,
-                                  int vertices, int offset, int rotation, int minY, int maxY, double centerX,
+    protected void processPolygon(String regionName, double radiusX, double radiusZ,
+                                  int vertices, double offset, double rotation, int minY, int maxY, double centerX,
                                   double centerZ, World world, CommandSender sender) {
         Ellipse2D ellipse = new Ellipse2D(radiusX, radiusZ, vertices, offset, rotation, centerX, centerZ);
         PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, ellipse.getVertices(), minY, maxY);

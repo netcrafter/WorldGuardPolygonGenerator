@@ -41,7 +41,7 @@ public class SquareSubCommand extends PolygonalCommand {
 
         validatePolyArgs(regionName, size, "4", rotation, minY, maxY, centerX, centerZ, world, sender);
 
-        int length = Integer.parseInt(size);
+        double length = Double.parseDouble(size);
         if (rotation.equalsIgnoreCase("0")) {
             double x = Double.parseDouble(centerX);
             double z = Double.parseDouble(centerZ);

@@ -15,12 +15,12 @@ class PolygonalCommand extends WGPGCommand {
                                     String inputZ, String world, CommandSender sender) throws CommandInputException {
         InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validIntBetween(radius, "radius", 0, Integer.MAX_VALUE);
+        iv.validDoubleBetween(radius, "radius", 0, Double.MAX_VALUE);
         iv.validIntBetween(vertices, "vertices", 0, 360);
-        iv.validIntBetween(offset, "offset", 0, 360);
+        iv.validDoubleBetween(offset, "offset", 0, 360);
         iv.validRangeY(minY, maxY);
-        iv.validDoubleBetween(inputX, "centerX", Double.MIN_VALUE, Double.MAX_VALUE);
-        iv.validDoubleBetween(inputZ, "centerZ", Double.MIN_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(inputX, "centerX", -Double.MAX_VALUE, Double.MAX_VALUE);
+        iv.validDoubleBetween(inputZ, "centerZ", -Double.MAX_VALUE, Double.MAX_VALUE);
         iv.validWorld(world);
         iv.allowOverrideRegion(regionName, world, sender);
     }
@@ -28,13 +28,13 @@ class PolygonalCommand extends WGPGCommand {
     protected void processPolygonArgs(String regionName, String radius,
                                       String vertices, String offset, String minY, String maxY, String inputX,
                                       String inputZ, String world, CommandSender sender) {
-        processPolygon(regionName, Integer.parseInt(radius), Integer.parseInt(vertices),
-                Integer.parseInt(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
+        processPolygon(regionName, Double.parseDouble(radius), Integer.parseInt(vertices),
+                Double.parseDouble(offset), Integer.parseInt(minY), Integer.parseInt(maxY),Double.parseDouble(inputX),
                 Double.parseDouble(inputZ), Bukkit.getWorld(world), sender);
     }
 
-    protected void processPolygon(String regionName, int radius,
-                                  int vertices, int offset, int minY, int maxY, double inputX,
+    protected void processPolygon(String regionName, double radius,
+                                  int vertices, double offset, int minY, int maxY, double inputX,
                                   double inputZ, World world, CommandSender sender) {
         Polygon2D poly = new Polygon2D(radius, vertices, offset, inputX, inputZ);
         PolygonRegionCreator prc = new PolygonRegionCreator(regionName, world, poly.getVertices(), minY, maxY);
