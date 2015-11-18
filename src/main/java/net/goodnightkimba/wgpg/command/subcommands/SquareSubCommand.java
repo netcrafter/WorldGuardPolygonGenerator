@@ -15,7 +15,7 @@ public class SquareSubCommand extends PolygonalCommand {
         addAlias("s");
         setSyntax("/wgpg square <regionName> <size> <minY> <maxY> [rotation] [X] [Z] [world]");
         setArgRange(5, 9);
-        setPermission("wgpg.generate.square");
+        setPermission("wgpg.square");
     }
 
     @Override

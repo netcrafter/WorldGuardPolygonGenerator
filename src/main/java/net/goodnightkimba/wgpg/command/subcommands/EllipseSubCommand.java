@@ -11,7 +11,7 @@ public class EllipseSubCommand extends EllipticCommand {
         addAlias("e");
         setSyntax("/wgpg ellipse <regionName> <radiusX> <radiusZ> <vertices> <offset> <rotation> <minY> <maxY> [X] [Z] [world]");
         setArgRange(9, 12);
-        setPermission("wgpg.generate.ellipse");
+        setPermission("wgpg.ellipse");
     }
 
     @Override

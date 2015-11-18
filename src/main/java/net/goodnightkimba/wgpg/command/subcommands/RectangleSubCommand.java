@@ -20,7 +20,7 @@ public class RectangleSubCommand extends EllipticCommand {
         addAlias("r");
         setSyntax("/wgpg rectangle <regionName> <sizeX> <sizeZ> <minY> <maxY> [rotation] [X] [Z] [world]");
         setArgRange(6, 10);
-        setPermission("wgpg.generate.rectangle");
+        setPermission("wgpg.rectangle");
     }
 
 	@Override

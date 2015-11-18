@@ -11,7 +11,7 @@ public class PolygonSubCommand extends PolygonalCommand {
         addAlias("p");
         setSyntax("/wgpg polygon <regionName> <radius> <vertices> <offset> <minY> <maxY> [X] [Z] [world]");
         setArgRange(7, 10);
-        setPermission("wgpg.generate.polygon");
+        setPermission("wgpg.polygon");
     }
 
     @Override

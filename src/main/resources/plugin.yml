@@ -9,22 +9,22 @@ commands:
      description: Generates a WorldGuard polygon region based upon the players input.
      usage: /wgpg help
 permissions:
-   wgpg.generate.polygon:
+   wgpg.polygon:
      description: Permission to use /wgpg polygon <regionName> <radius> <vertices> <offset> <minY> <maxY> [X] [Z] [world]
      default: op
-   wgpg.generate.ellipse:
+   wgpg.ellipse:
      decription: Permission to use /wgpg ellipse <regionName> <radiusX> <radiusZ> <vertices> <offset> <rotation> <minY> <maxY> [X] [Z] [world]
      default: op
-   wgpg.generate.circle:
+   wgpg.circle:
      decription: Permission to use /wgpg circle <regionName> <radius> <minY> <maxY> [X] [Z] [world]
      default: op
-   wgpg.generate.rectangle:
+   wgpg.rectangle:
      decription: Permission to use /wgpg rectangle <regionName> <sizeX> <sizeZ> <minY> <maxY> [rotation] [X] [Z] [world]
      default: op
-   wgpg.generate.square:
+   wgpg.square:
      decription: Permission to use /wgpg square <size> <minY> <maxY> [offset] [X] [Z] [world]
      default: op
-   wgpg.generate.override:
+   wgpg.override:
      description: Allows a player to override an existing Worldguard region when creating Worldguard region via WGPG.
      default: op
    wgpg.help:

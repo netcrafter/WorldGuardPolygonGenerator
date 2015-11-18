@@ -11,7 +11,7 @@ public class CircleSubCommand extends PolygonalCommand {
         addAlias("c");
         setSyntax("/wgpg circle <regionName> <radius> <minY> <maxY> [X] [Z] [world]");
         setArgRange(5, 8);
-        setPermission("wgpg.generate.circle");
+        setPermission("wgpg.circle");
     }
 
     @Override
