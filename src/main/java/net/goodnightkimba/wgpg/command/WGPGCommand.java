@@ -41,7 +41,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                     standardCommand = new HelpSubCommand();
                 }
                 if (!sender.hasPermission(standardCommand.getPermission()) && !standardCommand.getPermission().equalsIgnoreCase("")) {
-                    sender.sendMessage(Config.getString("permission-denided-cmd").replaceAll("(?i)&([a-fklmno0-9])", "\u00A7$1"));
+                    sender.sendMessage(Config.getString("permission-denied-cmd").replaceAll("(?i)&([a-fklmno0-9])", "\u00A7$1"));
                     return true;
                 }
                 if ((sender instanceof ConsoleCommandSender) && (standardCommand.getMaxArgs() != args.length)) {
