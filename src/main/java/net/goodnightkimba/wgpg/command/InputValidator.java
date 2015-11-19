@@ -12,36 +12,36 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
 public class InputValidator {
-	
-	public boolean integer(String input) {
-		try {
-			Integer.parseInt(input);
-			return true;
-		} catch (NumberFormatException e) {
-			return false;
-		}
-	}
-	
-	public boolean decimal(String input) {
-		try {
-			Double.parseDouble(input);
-			return true;
-		} catch (NumberFormatException e) {
-			return false;
-		}
-	}
-	
-	public boolean regionName(String regionName) {
-		if (regionName.equalsIgnoreCase("__global__")) return false;
-		Pattern idPattern = Pattern.compile("^[A-Za-z0-9_,'\\-\\+/]{1,}$");
-		return idPattern.matcher(regionName).matches();
-	}
-	
-	public boolean regionExists(String regionName, String world) throws CommandInputException {
-		if (Bukkit.getWorld(world) == null) throw new CommandInputException("invalid-world", world, "World Name", "world");
-		RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
-		return (rm.getRegion(regionName) != null);
-	}
+
+    public boolean integer(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean decimal(String input) {
+        try {
+            Double.parseDouble(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean regionName(String regionName) {
+        if (regionName.equalsIgnoreCase("__global__")) return false;
+        Pattern idPattern = Pattern.compile("^[A-Za-z0-9_,'\\-\\+/]{1,}$");
+        return idPattern.matcher(regionName).matches();
+    }
+
+    public boolean regionExists(String regionName, String world) throws CommandInputException {
+        if (Bukkit.getWorld(world) == null) throw new CommandInputException("invalid-world", world, "World Name", "world");
+        RegionManager rm = WorldGuardPolygonGenerator.WGBukkit.getRegionManager(Bukkit.getWorld(world));
+        return (rm.getRegion(regionName) != null);
+    }
 
     public void validWorld(String input) throws CommandInputException {
         if (Bukkit.getWorld(input) == null) throw new CommandInputException("invalid-world", input, "World Name", "world");
@@ -75,7 +75,7 @@ public class InputValidator {
         if (inputNum > max) throw new CommandInputException("too-large", input, String.valueOf(max), field);
     }
 
-	public void validDoubleBetween(String input, String field, double min, double max) throws CommandInputException {
+    public void validDoubleBetween(String input, String field, double min, double max) throws CommandInputException {
         if (!decimal(input)) throw new CommandInputException("must-be-double", input, "double", field);
         double inputNum = Double.parseDouble(input);
         if (inputNum < min) throw new CommandInputException("too-small", input, String.valueOf(min), field);

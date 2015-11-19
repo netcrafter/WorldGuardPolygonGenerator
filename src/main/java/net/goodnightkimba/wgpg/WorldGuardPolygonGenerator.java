@@ -31,54 +31,54 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 public final class WorldGuardPolygonGenerator extends JavaPlugin {
-	public static final String PREFIX = "[WGPG] ";
-	public static WorldGuardPlugin WGBukkit = null;
-	public static WorldEditPlugin WEBukkit = null;
+    public static final String PREFIX = "[WGPG] ";
+    public static WorldGuardPlugin WGBukkit = null;
+    public static WorldEditPlugin WEBukkit = null;
     public static ArrayList<StandardCommand> commandList = new ArrayList<>();
 
-	public static Config config;
-	
-	@Override
-	public void onEnable() {
-		WGBukkit = getWorldGuard();
-		if (WGBukkit == null) {
-			Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldGuard. Disabling WGPG");
-			onDisable();
-		}
-		
-		WEBukkit = getWorldEdit();
-		if (WEBukkit == null) {
-			Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldEdit. Disabling WGPG");
-			onDisable();
-		}
-		WorldGuardPolygonGenerator.config = new Config(this);
-		config.loadConfig();
+    public static Config config;
+
+    @Override
+    public void onEnable() {
+        WGBukkit = getWorldGuard();
+        if (WGBukkit == null) {
+            Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldGuard. Disabling WGPG");
+            onDisable();
+        }
+
+        WEBukkit = getWorldEdit();
+        if (WEBukkit == null) {
+            Bukkit.getLogger().log(Level.SEVERE, PREFIX + "Couldn\'t load WorldEdit. Disabling WGPG");
+            onDisable();
+        }
+        WorldGuardPolygonGenerator.config = new Config(this);
+        config.loadConfig();
 
         WGPGCommand wgpg = new WGPGCommand();
         wgpg.registerSubCommand(new HelpSubCommand());
-		wgpg.registerSubCommand(new PolygonSubCommand());
+        wgpg.registerSubCommand(new PolygonSubCommand());
         wgpg.registerSubCommand(new EllipseSubCommand());
         wgpg.registerSubCommand(new CircleSubCommand());
         wgpg.registerSubCommand(new SquareSubCommand());
         wgpg.registerSubCommand(new RectangleSubCommand());
         wgpg.registerSubCommand(new ReloadSubCommand());
-		getCommand("wgpg").setExecutor(wgpg);
+        getCommand("wgpg").setExecutor(wgpg);
         commandList.addAll(wgpg.getSubCommands());
-	}
+    }
 
-	private WorldGuardPlugin getWorldGuard() {
-		Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
-		if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-			return null;
-		}
-		return (WorldGuardPlugin) plugin;
-	}
+    private WorldGuardPlugin getWorldGuard() {
+        Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
+        if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
+            return null;
+        }
+        return (WorldGuardPlugin) plugin;
+    }
 
-	private WorldEditPlugin getWorldEdit() {
-		Plugin plugin = getServer().getPluginManager().getPlugin("WorldEdit");
-		if (plugin == null || !(plugin instanceof WorldEditPlugin)) {
-			return null;
-		}
-		return (WorldEditPlugin) plugin;
-	}
+    private WorldEditPlugin getWorldEdit() {
+        Plugin plugin = getServer().getPluginManager().getPlugin("WorldEdit");
+        if (plugin == null || !(plugin instanceof WorldEditPlugin)) {
+            return null;
+        }
+        return (WorldEditPlugin) plugin;
+    }
 }

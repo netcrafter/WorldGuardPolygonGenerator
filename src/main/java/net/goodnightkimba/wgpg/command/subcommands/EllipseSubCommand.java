@@ -15,8 +15,8 @@ public class EllipseSubCommand extends EllipticCommand {
     }
 
     @Override
-	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
-		String regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world;
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+        String regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world;
         regionName = args[1];
         radiusX = args[2];
         radiusZ = args[3];
@@ -37,5 +37,5 @@ public class EllipseSubCommand extends EllipticCommand {
         }
         validateEllipseArgs(regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
         processEllipseArgs(regionName, radiusX, radiusZ, vertices, offset, rotation, minY, maxY, centerX, centerZ, world, sender);
-	}
+    }
 }

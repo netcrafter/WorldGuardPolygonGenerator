@@ -25,7 +25,7 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
     private ArrayList<StandardCommand> subCommands = new ArrayList<>();
 
     @Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("wgpg")) {
             try {
                 StandardCommand standardCommand = null;
@@ -59,8 +59,8 @@ public class WGPGCommand implements CommandExecutor, StandardCommand {
                 return true;
             }
         }
-		return true;
-	}
+        return true;
+    }
 
     public void registerSubCommand(StandardCommand subCmd) {
         this.subCommands.add(subCmd);

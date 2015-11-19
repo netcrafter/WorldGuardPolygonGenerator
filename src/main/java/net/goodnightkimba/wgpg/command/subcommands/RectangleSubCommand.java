@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RectangleSubCommand extends EllipticCommand {
-	public RectangleSubCommand() {
+    public RectangleSubCommand() {
         setName("rectangle");
         addAlias("r");
         setSyntax("/wgpg rectangle <regionName> <sizeX> <sizeZ> <minY> <maxY> [rotation] [X] [Z] [world]");
@@ -23,9 +23,9 @@ public class RectangleSubCommand extends EllipticCommand {
         setPermission("wgpg.rectangle");
     }
 
-	@Override
-	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
-		String regionName, sizeX, sizeZ, minY, maxY, rotation, centerX, centerZ, world;
+    @Override
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+        String regionName, sizeX, sizeZ, minY, maxY, rotation, centerX, centerZ, world;
         regionName = args[1];
         sizeX = args[2];
         sizeZ = args[3];
@@ -74,5 +74,5 @@ public class RectangleSubCommand extends EllipticCommand {
         }
         RegionCreator prc = new PolygonRegionCreator(regionName, Bukkit.getWorld(world), rotatedVertices, Integer.parseInt(minY), Integer.parseInt(maxY));
         processRegionCreation(prc, sender);
-	}
+    }
 }

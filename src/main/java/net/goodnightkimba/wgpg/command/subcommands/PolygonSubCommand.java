@@ -15,28 +15,28 @@ public class PolygonSubCommand extends PolygonalCommand {
     }
 
     @Override
-	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
 
-		String regionName, radius, vertices, minY, maxY, offset, centerX, centerZ, world;
+        String regionName, radius, vertices, minY, maxY, offset, centerX, centerZ, world;
 
-		regionName = args[1];
-		radius = args[2];
-		vertices = args[3];
+        regionName = args[1];
+        radius = args[2];
+        vertices = args[3];
         offset = args[4];
         minY = args[5];
-		maxY = args[6];
+        maxY = args[6];
 
-		if (sender instanceof Player) {
-			Player player = (Player) sender;
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
             centerX = (args.length >= 8) ? args[7] : String.valueOf(player.getLocation().getX());
             centerZ = (args.length >= 9) ? args[8] : String.valueOf(player.getLocation().getZ());
             world = (args.length >= 10) ? args[9] : player.getWorld().getName();
-		} else {
+        } else {
             centerX = args[7];
             centerZ = args[8];
             world = args[9];
-		}
+        }
         validatePolyArgs(regionName, radius, vertices, offset, minY, maxY, centerX, centerZ, world, sender);
-		processPolygonArgs(regionName, radius, vertices, offset, minY, maxY, centerX, centerZ, world, sender);
-	}
+        processPolygonArgs(regionName, radius, vertices, offset, minY, maxY, centerX, centerZ, world, sender);
+    }
 }

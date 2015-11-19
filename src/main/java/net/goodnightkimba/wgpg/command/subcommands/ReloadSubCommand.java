@@ -15,9 +15,9 @@ public class ReloadSubCommand extends WGPGCommand {
         setPermission("wgpg.reload");
     }
 
-	@Override
-	public void execute(CommandSender sender, Command cmd, String label, String[] args) {
-		WorldGuardPolygonGenerator.config.reloadConfig();
-		sender.sendMessage(ChatColor.GREEN + "WGPG configuration reloaded!");
-	}
+    @Override
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) {
+        WorldGuardPolygonGenerator.config.reloadConfig();
+        sender.sendMessage(ChatColor.GREEN + "WGPG configuration reloaded!");
+    }
 }

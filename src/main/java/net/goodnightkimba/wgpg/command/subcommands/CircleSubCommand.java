@@ -15,7 +15,7 @@ public class CircleSubCommand extends PolygonalCommand {
     }
 
     @Override
-	public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
+    public void execute(CommandSender sender, Command cmd, String label, String[] args) throws CommandInputException {
         String regionName, radius, minY, maxY, inputX, inputZ, world;
 
         regionName = args[1];
@@ -35,5 +35,5 @@ public class CircleSubCommand extends PolygonalCommand {
         }
         validatePolyArgs(regionName, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
         processPolygonArgs(regionName, radius, "360", "0", minY, maxY, inputX, inputZ, world, sender);
-	}
+    }
 }
