@@ -15,8 +15,8 @@ class PolygonalCommand extends WGPGCommand {
                                     String inputZ, String world, CommandSender sender) throws CommandInputException {
         InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validDoubleBetween(radius, "radius", 0, Double.MAX_VALUE);
-        iv.validIntBetween(vertices, "vertices", 0, 360);
+        iv.validDoubleBetween(radius, "radius", 1, Double.MAX_VALUE);
+        iv.validIntBetween(vertices, "vertices", 2, 360);
         iv.validDoubleBetween(offset, "offset", 0, 360);
         iv.validRangeY(minY, maxY);
         iv.validDoubleBetween(inputX, "centerX", -Double.MAX_VALUE, Double.MAX_VALUE);

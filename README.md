@@ -13,3 +13,6 @@ This plugin requires [WorldGuard](http://dev.bukkit.org/bukkit-plugins/worldguar
 
 ###Source code and Issue tracking
 [Source code and issue tracking available through Github.](https://github.com/netcrafter/WorldGuardPolygonGenerator)
+
+###License
+[GNU General Public License](https://github.com/netcrafter/WorldGuardPolygonGenerator/blob/master/LICENSE)

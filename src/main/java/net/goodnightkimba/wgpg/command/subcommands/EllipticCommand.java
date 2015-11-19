@@ -15,8 +15,8 @@ class EllipticCommand extends WGPGCommand {
                                     String centerZ, String world, CommandSender sender) throws CommandInputException {
         InputValidator iv = new InputValidator();
         iv.validRegionName(regionName);
-        iv.validDoubleBetween(radiusX, "radiusX", 0, Double.MAX_VALUE);
-        iv.validDoubleBetween(radiusZ, "radiusZ", 0, Double.MAX_VALUE);
+        iv.validDoubleBetween(radiusX, "radiusX", 1, Double.MAX_VALUE);
+        iv.validDoubleBetween(radiusZ, "radiusZ", 1, Double.MAX_VALUE);
         iv.validIntBetween(vertices, "vertices", 2, 360);
         iv.validDoubleBetween(offset, "offset", 0, 360);
         iv.validDoubleBetween(rotation, "rotation", 0, 360);
