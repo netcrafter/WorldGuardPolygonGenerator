@@ -62,14 +62,14 @@ public class RectangleSubCommand extends EllipticCommand {
 
         double rotAng = Math.toRadians(Integer.parseInt(rotation));
         List<BlockVector2D> vertices = new ArrayList<>();
-        vertices.add(new BlockVector2D(x + lengthX, z + lengthZ));
-        vertices.add(new BlockVector2D(x + lengthX, z - lengthZ));
-        vertices.add(new BlockVector2D(x - lengthX, z - lengthZ));
-        vertices.add(new BlockVector2D(x - lengthX, z + lengthZ));
+        vertices.add(new BlockVector2D(lengthX, lengthZ));
+        vertices.add(new BlockVector2D(lengthX, -lengthZ));
+        vertices.add(new BlockVector2D(-lengthX, -lengthZ));
+        vertices.add(new BlockVector2D(-lengthX, lengthZ));
         List<BlockVector2D> rotatedVertices = new ArrayList<>();
         for (BlockVector2D p : vertices) {
-            double rotX = (p.getX() * Math.cos(rotAng)) + (p.getZ() * Math.sin(rotAng));
-            double rotZ = (p.getZ() * Math.cos(rotAng)) - (p.getX() * Math.sin(rotAng));
+            double rotX = (p.getX() * Math.cos(rotAng)) + (p.getZ() * Math.sin(rotAng)) + x;
+            double rotZ = (p.getZ() * Math.cos(rotAng)) - (p.getX() * Math.sin(rotAng)) + z;
             rotatedVertices.add(new BlockVector2D(rotX, rotZ));
         }
         RegionCreator prc = new PolygonRegionCreator(regionName, Bukkit.getWorld(world), rotatedVertices, Integer.parseInt(minY), Integer.parseInt(maxY));
