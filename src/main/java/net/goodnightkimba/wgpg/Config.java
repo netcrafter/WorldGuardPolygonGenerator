@@ -1,6 +1,6 @@
 package net.goodnightkimba.wgpg;
 
-import java.io.InputStream;
+import java.io.*;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
@@ -68,11 +68,13 @@ public class Config {
     }
 
     private YamlConfiguration getStringsConfig(String language) {
-
-        InputStream defConfigStream = plugin.getResource(language + "-strings.yml");
-        if (defConfigStream != null) {
-            return YamlConfiguration.loadConfiguration(defConfigStream);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(plugin.getResource(language + "-strings.yml")));
+            return YamlConfiguration.loadConfiguration(br);
+        } catch (IllegalArgumentException e) {
+            plugin.getLogger().log(Level.SEVERE, "Coudn't load language strings from jar");
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }
